@@ -27,7 +27,7 @@ app.use((req, res, next) => {
 // CORS Configuration
 const corsOptions = {
   origin: [
-    'https://your-netlify-app.netlify.app',
+    'https://iridescent-platypus-6f94e4.netlify.app',
     'http://localhost:3000',
     'http://localhost:5500'
   ],
