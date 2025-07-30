@@ -10,11 +10,13 @@ const { v4: uuidv4 } = require('uuid');
 const validator = require('validator');
 const bcrypt = require('bcryptjs');
 const helmet = require('helmet');
+const jwt = require('jsonwebtoken');
 
 // Initialize Express app
 const app = express();
 const PORT = process.env.PORT || 5000;
 const saltRounds = 10;
+const JWT_SECRET = process.env.JWT_SECRET || 'your-secret-key';
 
 // Enhanced Security Middleware
 app.use(helmet());
@@ -24,12 +26,13 @@ app.use((req, res, next) => {
   next();
 });
 
-// CORS Configuration
+// CORS Configuration - Add your frontend domains
 const corsOptions = {
   origin: [
     'https://iridescent-platypus-6f94e4.netlify.app',
     'http://localhost:3000',
-    'http://localhost:5500'
+    'http://localhost:5500',
+    'https://tia-backend-ydym.onrender.com' // Add your Render frontend URL
   ],
   methods: ['GET', 'POST', 'PATCH'],
   allowedHeaders: ['Content-Type', 'Authorization'],
@@ -130,15 +133,26 @@ const userSchema = new mongoose.Schema({
     }
   },
   createdAt: { type: Date, default: Date.now },
-  role: { type: String, default: 'user', enum: ['user', 'admin'] }
+  role: { type: String, default: 'user', enum: ['user', 'admin'] },
+  courses: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Course' }]
+});
+
+const otpSchema = new mongoose.Schema({
+  email: { type: String, required: true },
+  otp: { type: String, required: true },
+  otpId: { type: String, required: true },
+  expiresAt: { type: Date, required: true },
+  createdAt: { type: Date, default: Date.now }
 });
 
 // Add indexes for better performance
 paymentSchema.index({ email: 1, status: 1 });
 userSchema.index({ email: 1 }, { unique: true });
+otpSchema.index({ email: 1 });
 
 const Payment = mongoose.model('Payment', paymentSchema);
 const User = mongoose.model('User', userSchema);
+const OTP = mongoose.model('OTP', otpSchema);
 
 // Utility Functions
 const generateOTP = () => Math.floor(100000 + Math.random() * 900000).toString();
@@ -155,6 +169,41 @@ const sendEmail = async (options) => {
   } catch (error) {
     console.error('Email sending error:', error);
     return false;
+  }
+};
+
+// Auth Middleware
+const protect = async (req, res, next) => {
+  let token;
+  if (req.headers.authorization && req.headers.authorization.startsWith('Bearer')) {
+    token = req.headers.authorization.split(' ')[1];
+  }
+
+  if (!token) {
+    return res.status(401).json({
+      success: false,
+      message: 'Not authorized to access this route'
+    });
+  }
+
+  try {
+    const decoded = jwt.verify(token, JWT_SECRET);
+    const user = await User.findById(decoded.id).select('-password');
+
+    if (!user) {
+      return res.status(404).json({
+        success: false,
+        message: 'No user found with this ID'
+      });
+    }
+
+    req.user = user;
+    next();
+  } catch (error) {
+    return res.status(401).json({
+      success: false,
+      message: 'Not authorized to access this route'
+    });
   }
 };
 
@@ -193,7 +242,7 @@ app.post('/api/check-email', otpLimiter, async (req, res) => {
 
     const otp = generateOTP();
     const otpId = uuidv4();
-    const expiresAt = new Date(Date.now() + 10 * 60 * 1000);
+    const expiresAt = new Date(Date.now() + 10 * 60 * 1000); // 10 minutes
 
     await OTP.deleteMany({ email });
 
@@ -234,8 +283,163 @@ app.post('/api/check-email', otpLimiter, async (req, res) => {
   }
 });
 
+app.post('/api/verify-otp', async (req, res) => {
+  try {
+    const { email, otp, otpId } = req.body;
+
+    const otpRecord = await OTP.findOne({ email, otpId });
+    if (!otpRecord) {
+      return res.status(400).json({
+        success: false,
+        message: 'Invalid OTP request'
+      });
+    }
+
+    if (otpRecord.expiresAt < new Date()) {
+      return res.status(400).json({
+        success: false,
+        message: 'OTP has expired'
+      });
+    }
+
+    if (otpRecord.otp !== otp) {
+      return res.status(400).json({
+        success: false,
+        message: 'Invalid OTP'
+      });
+    }
+
+    // OTP is valid
+    await OTP.deleteOne({ _id: otpRecord._id });
+
+    res.status(200).json({
+      success: true,
+      message: 'OTP verified successfully'
+    });
+
+  } catch (error) {
+    console.error('OTP verification error:', error);
+    res.status(500).json({
+      success: false,
+      message: 'Internal server error'
+    });
+  }
+});
+
+app.post('/api/register', async (req, res) => {
+  try {
+    const { name, email, password } = req.body;
+
+    // Check if user already exists
+    const existingUser = await User.findOne({ email });
+    if (existingUser) {
+      return res.status(400).json({
+        success: false,
+        message: 'Email already registered'
+      });
+    }
+
+    // Hash password
+    const hashedPassword = await bcrypt.hash(password, saltRounds);
+
+    // Create user
+    const user = await User.create({
+      name,
+      email,
+      password: hashedPassword
+    });
+
+    // Create token
+    const token = jwt.sign({ id: user._id }, JWT_SECRET, {
+      expiresIn: process.env.JWT_EXPIRE || '30d'
+    });
+
+    res.status(201).json({
+      success: true,
+      token,
+      user: {
+        id: user._id,
+        name: user.name,
+        email: user.email,
+        role: user.role
+      }
+    });
+
+  } catch (error) {
+    console.error('Registration error:', error);
+    res.status(500).json({
+      success: false,
+      message: 'Internal server error'
+    });
+  }
+});
+
+app.post('/api/login', async (req, res) => {
+  try {
+    const { email, password } = req.body;
+
+    // Check if user exists
+    const user = await User.findOne({ email }).select('+password');
+    if (!user) {
+      return res.status(401).json({
+        success: false,
+        message: 'Invalid credentials'
+      });
+    }
+
+    // Check password
+    const isMatch = await bcrypt.compare(password, user.password);
+    if (!isMatch) {
+      return res.status(401).json({
+        success: false,
+        message: 'Invalid credentials'
+      });
+    }
+
+    // Create token
+    const token = jwt.sign({ id: user._id }, JWT_SECRET, {
+      expiresIn: process.env.JWT_EXPIRE || '30d'
+    });
+
+    res.status(200).json({
+      success: true,
+      token,
+      user: {
+        id: user._id,
+        name: user.name,
+        email: user.email,
+        role: user.role
+      }
+    });
+
+  } catch (error) {
+    console.error('Login error:', error);
+    res.status(500).json({
+      success: false,
+      message: 'Internal server error'
+    });
+  }
+});
+
+app.get('/api/me', protect, async (req, res) => {
+  try {
+    const user = await User.findById(req.user.id).select('-password');
+
+    res.status(200).json({
+      success: true,
+      user
+    });
+  } catch (error) {
+    console.error('Get user error:', error);
+    res.status(500).json({
+      success: false,
+      message: 'Internal server error'
+    });
+  }
+});
+
 // Payment Endpoints
-app.post('/api/payments', async (req, res) => {
+app.post('/api/payments', protect, async (req, res) => {
   try {
     const { name, email, phone, paymentMethod, txnId, courseId, amount } = req.body;
 
@@ -246,7 +450,13 @@ app.post('/api/payments', async (req, res) => {
       paymentMethod,
       txnId,
       courseId,
-      amount
+      amount,
+      user: req.user.id
+    });
+
+    // Add course to user's courses
+    await User.findByIdAndUpdate(req.user.id, {
+      $addToSet: { courses: courseId }
     });
 
     res.status(201).json({
