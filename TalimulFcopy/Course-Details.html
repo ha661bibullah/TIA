@@ -13,11 +13,7 @@
 
 
 
-
-
-
-
-    <style>
+<style>
         :root {
             --primary-color: #2E7D32;
             --secondary-color: #4CAF50;
@@ -845,7 +841,7 @@
   opacity: 1;
 }
 
-/* স্ক্রলে fixed হয়ে ডিজিটাল এনিমেশনসহ আসবে */
+/* স্ক্রলে fixed হয়ে ডিজিটাল এনিমেশনসহ আসবে */
 .mobile-navbar.fixed {
   position: fixed;
   top: 0;
@@ -865,661 +861,6 @@
     opacity: 1;
     transform: translateY(0) scale(1);
   }
-}
-
-/* ব্লার ওভারলে */
-.blur-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.4);
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-    z-index: 98;
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s ease;
-}
-
-.blur-overlay.active {
-    opacity: 1;
-    visibility: visible;
-}
-
-/* লগইন পপআপ */
-.login-popup {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(0.9);
-    width: 90%;
-    max-width: 400px;
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-    z-index: 1002;
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s ease;
-}
-
-.login-popup.active {
-    opacity: 1;
-    visibility: visible;
-    transform: translate(-50%, -50%) scale(1);
-}
-
-/* লগইন টাইটেল */
-.login-title {
-    text-align: center;
-    margin-bottom: 20px;
-    font-size: 22px;
-    font-weight: 600;
-    color: #333;
-}
-
-/* ফর্ম গ্রুপ */
-.form-group {
-    margin-bottom: 15px;
-}
-
-.form-group label {
-    display: block;
-    margin-bottom: 5px;
-    font-size: 14px;
-    color: #555;
-}
-
-.form-group input {
-    width: 100%;
-    padding: 10px 15px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    font-size: 14px;
-    transition: all 0.3s ease;
-}
-
-.form-group input:focus {
-    border-color: #6A35F2;
-    box-shadow: 0 0 0 2px rgba(106, 53, 242, 0.1);
-    outline: none;
-}
-
-/* লগইন বাটন */
-.login-submit {
-    width: 100%;
-    padding: 12px;
-    background-color: #6A35F2;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    margin-top: 10px;
-}
-
-.login-submit:hover {
-    background-color: #5628d8;
-}
-
-/* পাসওয়ার্ড ভুলে গেছেন লিংক */
-.forgot-password {
-    text-align: right;
-    margin: 10px 0;
-}
-
-.forgot-password a {
-    color: #6A35F2;
-    font-size: 13px;
-    text-decoration: none;
-}
-
-.forgot-password a:hover {
-    text-decoration: underline;
-}
-
-/* মেম্বার না হলে */
-.register-link {
-    text-align: center;
-    margin-top: 20px;
-    font-size: 14px;
-    color: #555;
-}
-
-.register-link a {
-    color: #6A35F2;
-    font-weight: 500;
-    text-decoration: none;
-}
-
-.register-link a:hover {
-    text-decoration: underline;
-}
-
-/* ক্লোজ বাটন */
-.close-login {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    background: transparent;
-    border: none;
-    font-size: 20px;
-    color: #888;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.close-login:hover {
-    color: #6A35F2;
-    transform: rotate(90deg);
-}
-
-/* সোশ্যাল লগইন বাটন */
-.social-login {
-    margin-top: 20px;
-    text-align: center;
-}
-
-.social-login-title {
-    position: relative;
-    margin-bottom: 15px;
-    font-size: 13px;
-    color: #777;
-}
-
-.social-login-title:before,
-.social-login-title:after {
-    content: "";
-    position: absolute;
-    top: 50%;
-    width: calc(50% - 70px);
-    height: 1px;
-    background-color: #ddd;
-}
-
-.social-login-title:before {
-    left: 0;
-}
-
-.social-login-title:after {
-    right: 0;
-}
-
-.social-buttons {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-}
-
-.social-button {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid #ddd;
-    color: #555;
-    font-size: 18px;
-    transition: all 0.3s ease;
-}
-
-.social-button:hover {
-    background-color: #f5f5f5;
-    transform: translateY(-3px);
-}
-
-.facebook {
-    color: #3b5998;
-}
-
-.google {
-    color: #dd4b39;
-}
-
-/* ডার্ক থিম সাপোর্ট */
-body.dark-theme .login-popup {
-    background-color: #1f1f1f;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-}
-
-body.dark-theme .login-title {
-    color: #e0e0e0;
-}
-
-body.dark-theme .form-group label {
-    color: #aaa;
-}
-
-body.dark-theme .form-group input {
-    background-color: #2d2d2d;
-    border-color: #3d3d3d;
-    color: #e0e0e0;
-}
-
-body.dark-theme .register-link,
-body.dark-theme .social-login-title {
-    color: #aaa;
-}
-
-body.dark-theme .social-button {
-    border-color: #3d3d3d;
-    color: #aaa;
-}
-
-body.dark-theme .social-button:hover {
-    background-color: #2d2d2d;
-}
-
-body.dark-theme .close-login {
-    color: #aaa;
-}
-
-body.dark-theme .social-login-title:before,
-body.dark-theme .social-login-title:after {
-    background-color: #3d3d3d;
-}
-
-
-.container {
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 450px;
-    padding: 20px 20px;
-    text-align: center;
-}
-
-.logo {
-    font-size: 24px;
-    font-weight: bold;
-    color: #333;
-    letter-spacing: 1px;
-}
-
-.title {
-    font-size: 28px;
-    color: #333;
-    margin-bottom: 20px;
-}
-
-.form-container {
-    display: block;
-    width: 100%;
-}
-
-.form-group {
-    margin-bottom: 15px;
-    text-align: left;
-}
-
-label {
-    display: block;
-    margin-bottom: 8px;
-    font-size: 16px;
-    font-weight: bold;
-    color: #333;
-}
-
-input {
-    width: 100%;
-    padding: 12px 15px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    font-size: 16px;
-    transition: border-color 0.3s;
-}
-
-input:focus {
-    outline: none;
-    border-color: #6A35F2;
-}
-
-.error-message {
-    color: #e74c3c;
-    font-size: 14px;
-    margin-top: 5px;
-    display: none;
-}
-
-.show-error {
-    display: block;
-}
-
-.password-container {
-    position: relative;
-}
-
-.toggle-password {
-    position: absolute;
-    right: 15px;
-    top: 50%;
-    transform: translateY(-50%);
-    background: none;
-    border: none;
-    color: #666;
-    cursor: pointer;
-    font-size: 14px;
-}
-
-.button {
-    background-color: #6A35F2;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    padding: 12px 20px;
-    width: 100%;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    margin-top: 10px;
-    opacity: 0.9;
-}
-
-.button:hover {
-    opacity: 1;
-    transition: opacity 0.5s ease-in-out;
-}
-
-.form-footer {
-    margin-top: 20px;
-    font-size: 15px;
-    color: #666;
-}
-
-.form-footer a {
-    color: #6A35F2;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.form-footer a:hover {
-    text-decoration: underline;
-}
-
-.form-switch {
-    margin-top: 30px;
-}
-
-#emailCheckForm, #otpVerificationForm, #signupForm {
-    display: none;
-}
-
-/* For mobile screens */
-@media (max-width: 480px) {
-    .container {
-        padding: 30px 15px;
-    }
-    
-    .title {
-        font-size: 24px;
-    }
-    
-    input {
-        padding: 10px 12px;
-    }
-}
-
-.success-message {
-    background-color: #d4edda;
-    color: #155724;
-    padding: 15px;
-    border-radius: 5px;
-    margin-bottom: 20px;
-    display: none;
-}
-
-.otp-container {
-    margin: 20px 0;
-}
-
-.otp-input {
-    display: flex;
-    justify-content: center;
-    margin: 15px 0;
-}
-
-.otp-input input {
-    width: 50px;
-    height: 50px;
-    font-size: 24px;
-    text-align: center;
-    margin: 0 5px;
-}
-
-.timer {
-    color: #6A35F2;
-    font-size: 16px;
-    margin-top: 10px;
-    font-weight: bold;
-}
-
-.resend-button {
-    background: none;
-    border: none;
-    color: #6A35F2;
-    text-decoration: underline;
-    cursor: pointer;
-    font-size: 14px;
-    margin-top: 10px;
-}
-
-.resend-button:disabled {
-    color: #999;
-    text-decoration: none;
-    cursor: not-allowed;
-}
-
-.modal {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 1000;
-    justify-content: center;
-    align-items: center;
-}
-
-.modal-content {
-    background-color: white;
-    padding: 30px;
-    border-radius: 5px;
-    max-width: 400px;
-    text-align: center;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-}
-
-.modal-title {
-    font-size: 22px;
-    margin-bottom: 15px;
-    color: #333;
-}
-
-.modal-body {
-    margin-bottom: 20px;
-    font-size: 16px;
-    color: #666;
-}
-
-.modal-button {
-    background-color: #6A35F2;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-}
-
-.loader {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1001;
-}
-
-.spinner {
-    width: 40px;
-    height: 40px;
-    border: 4px solid #f3f3f3;
-    border-top: 4px solid #6A35F2;
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
-/* প্রোফাইল ড্রপডাউন স্টাইল */
-.profile-dropdown {
-    position: relative;
-    display: inline-block;
-}
-
-.profile-icon {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background-color: #6A35F2;
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    font-weight: bold;
-}
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-    right: 0;
-    background-color: #f9f9f9;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-    border-radius: 5px;
-    overflow: hidden;
-}
-
-.dropdown-content a {
-    color: #333;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-    transition: background-color 0.3s;
-}
-
-.dropdown-content a:hover {
-    background-color: #f1f1f1;
-}
-
-.show-dropdown {
-    display: block;
-}
-
-/* ডার্ক থিম সাপোর্ট */
-body.dark-theme .dropdown-content {
-    background-color: #2d2d2d;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.4);
-}
-
-body.dark-theme .dropdown-content a {
-    color: #e0e0e0;
-}
-
-body.dark-theme .dropdown-content a:hover {
-    background-color: #3d3d3d;
-}
-
-/* ডার্ক থিম সাপোর্ট */
-body.dark-theme .login-popup {
-    background-color: #1f1f1f;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-}
-
-body.dark-theme .login-title {
-    color: #e0e0e0;
-}
-
-body.dark-theme .form-group label {
-    color: #aaa;
-}
-
-body.dark-theme .form-group input {
-    background-color: #2d2d2d;
-    border-color: #3d3d3d;
-    color: #e0e0e0;
-}
-
-body.dark-theme .register-link,
-body.dark-theme .social-login-title {
-    color: #aaa;
-}
-
-body.dark-theme .social-button {
-    border-color: #3d3d3d;
-    color: #aaa;
-}
-
-body.dark-theme .social-button:hover {
-    background-color: #2d2d2d;
-}
-
-body.dark-theme .close-login {
-    color: #aaa;
-}
-
-body.dark-theme .social-login-title:before,
-body.dark-theme .social-login-title:after {
-    background-color: #3d3d3d;
-}
-
-body.dark-theme .container {
-    background-color: #1f1f1f;
-    color: #e0e0e0;
-}
-
-body.dark-theme .title {
-    color: #e0e0e0;
-}
-
-body.dark-theme label {
-    color: #e0e0e0;
-}
-
-body.dark-theme .success-message {
-    background-color: #155724;
-    color: #d4edda;
-}
-
-body.dark-theme .modal-content {
-    background-color: #2d2d2d;
-    color: #e0e0e0;
-}
-
-body.dark-theme .modal-title {
-    color: #e0e0e0;
-}
-
-body.dark-theme .modal-body {
-    color: #aaa;
 }
     </style>
     <!-- Header Section -->
@@ -1714,9 +1055,1597 @@ body.dark-theme .modal-body {
         <!-- Your website content goes here -->
     </main>
 
-    <!-- Login Popup and Blur Overlay -->
-    <div class="blur-overlay" id="mainBlurOverlay"></div>
-    <script>
+<script>
+    // ====================
+    // Language Toggle Module
+    // ====================
+    const LanguageModule = (() => {
+        const languages = {
+            en: {
+                flag: 'https://flagcdn.com/w40/us.png',
+                name: 'English',
+                alt: 'English'
+            },
+            bn: {
+                flag: 'https://flagcdn.com/w40/bd.png',
+                name: 'বাংলা',
+                alt: 'বাংলা'
+            }
+        };
+
+        let currentLang = 'bn';
+
+        const toggleLanguage = () => {
+            currentLang = currentLang === 'en' ? 'bn' : 'en';
+            const lang = languages[currentLang];
+            
+            // Update mobile language switcher
+            const flag = document.getElementById('flag');
+            const langText = document.getElementById('lang');
+            if (flag && langText) {
+                flag.src = lang.flag;
+                flag.alt = lang.alt;
+                langText.textContent = lang.name;
+            }
+
+            // Update desktop language switcher
+            const desktopFlag = document.getElementById('desktopFlag');
+            const desktopLangText = document.getElementById('desktopLang');
+            if (desktopFlag && desktopLangText) {
+                desktopFlag.src = lang.flag;
+                desktopFlag.alt = lang.alt;
+                desktopLangText.textContent = lang.name;
+            }
+
+            console.log('Language switched to:', currentLang);
+        };
+
+        return {
+            toggleLanguage
+        };
+    })();
+
+    // ====================
+    // Theme Toggle Module
+    // ====================
+    const ThemeModule = (() => {
+        const toggleTheme = () => {
+            const body = document.body;
+            const isDark = body.getAttribute('data-theme') === 'dark';
+            
+            body.setAttribute('data-theme', isDark ? 'light' : 'dark');
+            
+            // Update icon
+            const icons = document.querySelectorAll('.theme-toggle i');
+            icons.forEach(icon => {
+                icon.className = isDark ? 'fas fa-moon' : 'fas fa-sun';
+            });
+        };
+
+        return {
+            toggleTheme
+        };
+    })();
+
+    // ====================
+    // Mobile Menu Module
+    // ====================
+    const MobileMenuModule = (() => {
+        const toggleMobileMenu = () => {
+            const mobileNavMenu = document.getElementById('mobileNavMenu');
+            const toggleIcon = document.querySelector('.mobile-toggle i');
+            
+            if (mobileNavMenu && toggleIcon) {
+                const isActive = mobileNavMenu.classList.contains('active');
+                
+                if (isActive) {
+                    mobileNavMenu.classList.remove('active');
+                    toggleIcon.className = 'fas fa-bars';
+                } else {
+                    mobileNavMenu.classList.add('active');
+                    toggleIcon.className = 'fas fa-times';
+                    // Close search bar if open
+                    SearchModule.closeMobileSearch();
+                }
+            }
+        };
+
+        return {
+            toggleMobileMenu
+        };
+    })();
+
+    // ====================
+    // Search Module
+    // ====================
+    const SearchModule = (() => {
+        const toggleMobileSearch = () => {
+            const searchBar = document.getElementById('mobileSearchBar');
+            const searchInput = document.getElementById('mobileSearchInput');
+            
+            if (searchBar) {
+                const isActive = searchBar.classList.contains('active');
+                
+                if (isActive) {
+                    closeMobileSearch();
+                } else {
+                    searchBar.classList.add('active');
+                    // Close mobile menu if open
+                    const mobileNavMenu = document.getElementById('mobileNavMenu');
+                    const toggleIcon = document.querySelector('.mobile-toggle i');
+                    if (mobileNavMenu && mobileNavMenu.classList.contains('active')) {
+                        mobileNavMenu.classList.remove('active');
+                        if (toggleIcon) toggleIcon.className = 'fas fa-bars';
+                    }
+                    // Focus on search input
+                    setTimeout(() => {
+                        if (searchInput) searchInput.focus();
+                    }, 300);
+                }
+            }
+        };
+
+        const closeMobileSearch = () => {
+            const searchBar = document.getElementById('mobileSearchBar');
+            const searchInput = document.getElementById('mobileSearchInput');
+            
+            if (searchBar) {
+                searchBar.classList.remove('active');
+                if (searchInput) searchInput.value = '';
+            }
+        };
+
+        const handleSearch = (query) => {
+            if (query && query.trim()) {
+                alert(`খুঁজছেন: "${query}"`);
+                console.log('Searching for:', query);
+            }
+        };
+
+        return {
+            toggleMobileSearch,
+            closeMobileSearch,
+            handleSearch
+        };
+    })();
+
+    // ====================
+    // Dropdown Module
+    // ====================
+    const DropdownModule = (() => {
+        const toggleDropdown = (element) => {
+            const dropdown = element.querySelector('.dropdown-content');
+            if (dropdown) {
+                const isVisible = dropdown.style.display === 'block';
+                dropdown.style.display = isVisible ? 'none' : 'block';
+            }
+        };
+
+        return {
+            toggleDropdown
+        };
+    })();
+
+    // ====================
+    // Scroll Module
+    // ====================
+    const ScrollModule = (() => {
+        let lastScrollTop = 0;
+        let isScrolling = false;
+        let scrollStartPosition = 0;
+
+        const initScrollHide = () => {
+            window.addEventListener('scroll', () => {
+                const topBar = document.getElementById('topBar');
+                if (topBar && window.innerWidth <= 1080) {
+                    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                    
+                    if (!isScrolling) {
+                        isScrolling = true;
+                        scrollStartPosition = scrollTop;
+                    }
+                    
+                    if (scrollTop > 0 && scrollTop > scrollStartPosition) {
+                        topBar.classList.add('hidden');
+                    }
+                    
+                    if (scrollTop === 0) {
+                        topBar.classList.remove('hidden');
+                        isScrolling = false;
+                    }
+                    
+                    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+                }
+            });
+
+            // Reset isScrolling when scroll stops
+            let scrollTimeout;
+            window.addEventListener('scroll', () => {
+                clearTimeout(scrollTimeout);
+                scrollTimeout = setTimeout(() => {
+                    if (window.pageYOffset === 0) {
+                        isScrolling = false;
+                    }
+                }, 150);
+            });
+        };
+
+        const initNavbarScrollEffect = () => {
+            window.addEventListener('scroll', function() {
+                const navbar = document.querySelector('.mobile-navbar');
+                if (navbar && window.innerWidth <= 1080) {
+                    if (window.scrollY > 50) {
+                        navbar.classList.add('fixed');
+                    } else {
+                        navbar.classList.remove('fixed');
+                    }
+                }
+            });
+        };
+
+        return {
+            initScrollHide,
+            initNavbarScrollEffect
+        };
+    })();
+
+    // ====================
+    // Navigation Module
+    // ====================
+    const NavigationModule = (() => {
+        const setActiveNavLink = (clickedLink) => {
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+            });
+            clickedLink.classList.add('active');
+        };
+
+        const initNavLinks = () => {
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    if (!this.parentElement.classList.contains('dropdown')) {
+                        setActiveNavLink(this);
+                    }
+                });
+            });
+        };
+
+        return {
+            initNavLinks
+        };
+    })();
+
+    // ====================
+    // Initialize All Modules
+    // ====================
+    document.addEventListener('DOMContentLoaded', () => {
+        // Initialize search functionality
+        const searchInput = document.getElementById('searchInput');
+        if (searchInput) {
+            searchInput.addEventListener('keypress', (event) => {
+                if (event.key === 'Enter') {
+                    SearchModule.handleSearch(searchInput.value);
+                }
+            });
+        }
+
+        const mobileSearchInput = document.getElementById('mobileSearchInput');
+        if (mobileSearchInput) {
+            mobileSearchInput.addEventListener('keypress', (event) => {
+                if (event.key === 'Enter') {
+                    SearchModule.handleSearch(mobileSearchInput.value);
+                    SearchModule.closeMobileSearch();
+                }
+            });
+        }
+
+        // Initialize scroll effects
+        ScrollModule.initScrollHide();
+        ScrollModule.initNavbarScrollEffect();
+
+        // Initialize navigation
+        NavigationModule.initNavLinks();
+
+        // Initialize smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Initialize keyboard navigation support
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape') {
+                const mobileNavMenu = document.getElementById('mobileNavMenu');
+                const mobileSearchBar = document.getElementById('mobileSearchBar');
+                const toggleIcon = document.querySelector('.mobile-toggle i');
+                
+                if (mobileNavMenu && mobileNavMenu.classList.contains('active')) {
+                    mobileNavMenu.classList.remove('active');
+                    if (toggleIcon) {
+                        toggleIcon.className = 'fas fa-bars';
+                    }
+                }
+
+                if (mobileSearchBar && mobileSearchBar.classList.contains('active')) {
+                    SearchModule.closeMobileSearch();
+                }
+            }
+        });
+
+        // Initialize language switcher keyboard support
+        document.querySelectorAll('.language-switcher').forEach(switcher => {
+            switcher.addEventListener('keypress', (event) => {
+                if (event.key === 'Enter' || event.key === ' ') {
+                    event.preventDefault();
+                    LanguageModule.toggleLanguage();
+                }
+            });
+        });
+
+        // Initialize resize listener
+        window.addEventListener('resize', () => {
+            const mobileNavMenu = document.getElementById('mobileNavMenu');
+            const mobileSearchBar = document.getElementById('mobileSearchBar');
+            const toggleIcon = document.querySelector('.mobile-toggle i');
+            
+            if (window.innerWidth > 1080) {
+                if (mobileNavMenu) {
+                    mobileNavMenu.classList.remove('active');
+                }
+                if (mobileSearchBar) {
+                    mobileSearchBar.classList.remove('active');
+                }
+                if (toggleIcon) {
+                    toggleIcon.className = 'fas fa-bars';
+                }
+            }
+        });
+    });
+
+    // ====================
+    // Global Functions for HTML onClick
+    // ====================
+    function toggleLanguage() {
+        LanguageModule.toggleLanguage();
+    }
+
+    function toggleTheme() {
+        ThemeModule.toggleTheme();
+    }
+
+    function toggleMobileMenu() {
+        MobileMenuModule.toggleMobileMenu();
+    }
+
+    function toggleMobileSearch() {
+        SearchModule.toggleMobileSearch();
+    }
+
+    function closeMobileSearch() {
+        SearchModule.closeMobileSearch();
+    }
+
+    function toggleDropdown(element) {
+        DropdownModule.toggleDropdown(element);
+    }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style>
+/* লগইন পপআপ স্টাইল */
+.blur-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    z-index: 98;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.blur-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.login-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.9);
+    width: 90%;
+    max-width: 400px;
+    /* background-color: white; */
+    border-radius: 10px;
+    /* box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); */
+    z-index: 1002;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.login-popup.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.container {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 450px;
+    padding: 20px 20px;
+    text-align: center;
+}
+
+.title {
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.form-container {
+    display: block;
+    width: 100%;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+}
+
+input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+input:focus {
+    outline: none;
+    border-color: #6A35F2;
+}
+
+.error-message {
+    color: #e74c3c;
+    font-size: 14px;
+    margin-top: 5px;
+    display: none;
+}
+
+.show-error {
+    display: block;
+}
+
+.password-container {
+    position: relative;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: #666;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.button {
+    background-color: #6A35F2;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 12px 20px;
+    width: 100%;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 10px;
+    opacity: 0.9;
+}
+
+.button:hover {
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.form-footer {
+    margin-top: 20px;
+    font-size: 15px;
+    color: #666;
+}
+
+.form-footer a {
+    color: #6A35F2;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.form-footer a:hover {
+    text-decoration: underline;
+}
+
+.form-switch {
+    margin-top: 30px;
+}
+
+#emailCheckForm, #otpVerificationForm, #signupForm {
+    display: none;
+}
+
+.success-message {
+    background-color: #d4edda;
+    color: #155724;
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    display: none;
+}
+
+.otp-container {
+    margin: 20px 0;
+}
+
+.otp-input {
+    display: flex;
+    justify-content: center;
+    margin: 15px 0;
+}
+
+.otp-input input {
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+    text-align: center;
+    margin: 0 5px;
+}
+
+.timer {
+    color: #6A35F2;
+    font-size: 16px;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.resend-button {
+    background: none;
+    border: none;
+    color: #6A35F2;
+    text-decoration: underline;
+    cursor: pointer;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+.resend-button:disabled {
+    color: #999;
+    text-decoration: none;
+    cursor: not-allowed;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 30px;
+    border-radius: 5px;
+    max-width: 400px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.modal-title {
+    font-size: 22px;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.modal-body {
+    margin-bottom: 20px;
+    font-size: 16px;
+    color: #666;
+}
+
+.modal-button {
+    background-color: #6A35F2;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* লোডার সর্বোচ্চ z-index */
+.loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #6A35F2;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* প্রোফাইল ড্রপডাউন স্টাইল */
+.profile-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.profile-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #6A35F2;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.dropdown-content a {
+    color: #333;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    transition: background-color 0.3s;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+.show-dropdown {
+    display: block;
+}
+
+/* ডার্ক থিম সাপোর্ট */
+body.dark-theme .login-popup {
+    background-color: #1f1f1f;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-theme .login-title {
+    color: #e0e0e0;
+}
+
+body.dark-theme .form-group label {
+    color: #aaa;
+}
+
+body.dark-theme .form-group input {
+    background-color: #2d2d2d;
+    border-color: #3d3d3d;
+    color: #e0e0e0;
+}
+
+body.dark-theme .register-link,
+body.dark-theme .social-login-title {
+    color: #aaa;
+}
+
+body.dark-theme .social-button {
+    border-color: #3d3d3d;
+    color: #aaa;
+}
+
+body.dark-theme .social-button:hover {
+    background-color: #2d2d2d;
+}
+
+body.dark-theme .close-login {
+    color: #aaa;
+}
+
+body.dark-theme .social-login-title:before,
+body.dark-theme .social-login-title:after {
+    background-color: #3d3d3d;
+}
+
+body.dark-theme .container {
+    background-color: #1f1f1f;
+    color: #e0e0e0;
+}
+
+body.dark-theme .title {
+    color: #e0e0e0;
+}
+
+body.dark-theme label {
+    color: #e0e0e0;
+}
+
+body.dark-theme .success-message {
+    background-color: #155724;
+    color: #d4edda;
+}
+
+body.dark-theme .modal-content {
+    background-color: #2d2d2d;
+    color: #e0e0e0;
+}
+
+body.dark-theme .modal-title {
+    color: #e0e0e0;
+}
+
+body.dark-theme .modal-body {
+    color: #aaa;
+}
+
+/* For mobile screens */
+@media (max-width: 480px) {
+    .container {
+        padding: 30px 15px;
+    }
+    
+    .title {
+        font-size: 24px;
+    }
+    
+    input {
+        padding: 10px 12px;
+    }
+}
+</style>
+
+<!-- Login Popup and Blur Overlay -->
+<div class="blur-overlay" id="mainBlurOverlay"></div>
+<div class="login-popup" id="loginPopup">
+    <button class="close-login" onclick="closeLoginPopup()">
+        <i class="fas fa-times"></i>
+    </button>
+    <div class="container">        
+        <div id="loginSection">
+            <h1 class="title">লগইন করুন</h1>
+            
+            <div class="success-message" id="registrationSuccess">
+                আপনার একাউন্ট সফলভাবে তৈরি হয়েছে। এখন লগইন করুন।
+            </div>
+            
+            <form id="loginForm" class="form-container" autocomplete="off">
+                <div class="form-group">
+                    <label for="loginEmail">ইমেইল</label>
+                    <input name="login_email" id="loginEmail" placeholder="আপনার ইমেইল লিখুন">
+                    <p class="error-message" id="loginEmailError">অনুগ্রহ করে একটি সঠিক ইমেইল প্রদান করুন</p>
+                </div>
+                
+                <div class="form-group">
+                    <label for="loginPassword">পাসওয়ার্ড</label>
+                    <div class="password-container">
+                        <input type="password" name="login_password" id="loginPassword" placeholder="আপনার পাসওয়ার্ড লিখুন">
+                        <button type="button" class="toggle-password" onclick="togglePasswordVisibility('loginPassword', 'loginPasswordToggle')" id="loginPasswordToggle">দেখুন</button>
+                    </div>
+                    <p class="error-message" id="loginPasswordError">পাসওয়ার্ড প্রয়োজন</p>
+                </div>
+                
+                <button type="submit" class="button">লগইন করুন</button>
+                
+                <div class="form-footer">
+                    একাউন্ট নেই? <a href="#" onclick="toggleForm('emailCheck'); return false;">নতুন একাউন্ট খুলুন</a>
+                </div>
+            </form>
+        </div>
+        
+        <!-- Step 1: Email Check Form -->
+        <div id="emailCheckSection">
+            <h1 class="title">নতুন একাউন্ট খুলুন</h1>
+            
+            <form id="emailCheckForm" class="form-container">
+                <div class="form-group">
+                    <label for="checkEmail">ইমেইল</label>
+                    <input type="email" id="checkEmail" placeholder="আপনার ইমেইল লিখুন">
+                    <p class="error-message" id="checkEmailError">অনুগ্রহ করে একটি সঠিক ইমেইল প্রদান করুন</p>
+                </div>
+                
+                <button type="submit" class="button">এগিয়ে যান</button>
+                
+                <div class="form-footer">
+                    ইতিমধ্যে একাউন্ট আছে? <a href="#" onclick="toggleForm('login'); return false;">লগইন করুন</a>
+                </div>
+            </form>
+        </div>
+        
+        <!-- Step 2: OTP Verification Form -->
+        <div id="otpVerificationSection">
+            <h1 class="title">অটিপি যাচাইকরণ</h1>
+            
+            <form id="otpVerificationForm" class="form-container">
+                <p>আপনার ইমেইলে (<span id="userEmail"></span>) ৪ সংখ্যার অটিপি পাঠানো হয়েছে</p>
+                
+                <div class="otp-container">
+                    <label>অটিপি দিন</label>
+                    <div class="otp-input">
+                        <input type="text" maxlength="1" id="otp1" class="otp-digit">
+                        <input type="text" maxlength="1" id="otp2" class="otp-digit">
+                        <input type="text" maxlength="1" id="otp3" class="otp-digit">
+                        <input type="text" maxlength="1" id="otp4" class="otp-digit">
+                    </div>
+                    <p class="error-message" id="otpError">অনুগ্রহ করে সঠিক অটিপি দিন</p>
+                    
+                    <div class="timer" id="otpTimer">বাকি সময়: <span id="timer">02:00</span></div>
+                    <button type="button" class="resend-button" id="resendOtp" disabled>পুনরায় অটিপি পাঠান</button>
+                </div>
+                
+                <button type="submit" class="button">যাচাই করুন</button>
+                
+                <div class="form-footer">
+                    <a href="#" onclick="toggleForm('emailCheck'); return false;">ফিরে যান</a>
+                </div>
+            </form>
+        </div>
+        
+        <!-- Step 3: Complete Registration Form -->
+        <div id="signupSection">
+            <h1 class="title">রেজিস্ট্রেশন সম্পন্ন করুন</h1>
+            
+            <form id="signupForm" class="form-container">
+                <div class="form-group">
+                    <label for="signupName">পূর্ণ নাম</label>
+                    <input type="text" id="signupName" placeholder="আপনার পূর্ণ নাম লিখুন">
+                    <p class="error-message" id="signupNameError">নাম প্রয়োজন</p>
+                </div>
+                
+                <div class="form-group">
+                    <label for="signupPassword">পাসওয়ার্ড</label>
+                    <div class="password-container">
+                        <input type="password" id="signupPassword" placeholder="একটি শক্তিশালী পাসওয়ার্ড লিখুন">
+                        <button type="button" class="toggle-password" onclick="togglePasswordVisibility('signupPassword', 'signupPasswordToggle')" id="signupPasswordToggle">দেখুন</button>
+                    </div>
+                    <p class="error-message" id="signupPasswordError">পাসওয়ার্ড কমপক্ষে ৬ অক্ষরের হতে হবে</p>
+                </div>
+                
+                <div class="form-group">
+                    <label for="signupConfirmPassword">পাসওয়ার্ড নিশ্চিত করুন</label>
+                    <div class="password-container">
+                        <input type="password" id="signupConfirmPassword" placeholder="পাসওয়ার্ড আবার লিখুন">
+                        <button type="button" class="toggle-password" onclick="togglePasswordVisibility('signupConfirmPassword', 'confirmPasswordToggle')" id="confirmPasswordToggle">দেখুন</button>
+                    </div>
+                    <p class="error-message" id="signupConfirmPasswordError">পাসওয়ার্ড মিলছে না</p>
+                </div>
+                
+                <button type="submit" class="button">রেজিস্ট্রেশন সম্পন্ন করুন</button>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Success Modal -->
+    <div class="modal" id="successModal">
+        <div class="modal-content">
+            <h2 class="modal-title">অভিনন্দন!</h2>
+            <p class="modal-body">আপনার রেজিস্ট্রেশন সফলভাবে সম্পন্ন হয়েছে। এখন আপনি লগইন করতে পারেন।</p>
+            <button class="modal-button" onclick="closeModal()">বুঝেছি</button>
+        </div>
+    </div>
+</div>
+
+<!-- Profile Dropdown (shown when logged in) -->
+<div class="profile-dropdown" id="profileDropdown" style="display: none; position: fixed; right: 20px; top: 20px; z-index: 1000;">
+    <div class="profile-icon" id="profileIcon">P</div>
+    <div class="dropdown-content" id="dropdownContent">
+        <a href="#" id="profileLink">প্রোফাইল</a>
+        <a href="#" id="coursesLink">আমার কোর্স</a>
+        <a href="#" id="logoutButton">লগআউট</a>
+    </div>
+</div>
+
+<script>
+    // ====================
+    // Login Module
+    // ====================
+    const LoginModule = (() => {
+        // ডেটাবেস URL (এটি আপনার বেকেন্ড API URL দিয়ে প্রতিস্থাপন করুন)
+        const DB_API_URL = 'https://tia-backend-ydym.onrender.com/api';
+        
+        // গ্লোবাল ভেরিয়েবল
+        let otpTimer;
+        let tokenRefreshInterval;
+        let currentUserEmail = '';
+        let generatedOTP = '';
+        
+        // অপ্টিমাইজড Timeout - ৫ সেকেন্ড করা হয়েছে ১০ সেকেন্ডের পরিবর্তে
+        const fetchWithTimeout = async (url, options, timeout = 5000) => {
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), timeout);
+
+            try {
+                const response = await fetch(url, {
+                    ...options,
+                    signal: controller.signal
+                });
+                clearTimeout(timeoutId);
+                return response;
+            } catch (error) {
+                clearTimeout(timeoutId);
+                if (error.name === 'AbortError') {
+                    throw new Error('রিকোয়েস্ট টাইমআউট হয়েছে');
+                }
+                throw error;
+            }
+        };
+
+        // Toggle between forms
+        function toggleForm(formType) {
+            document.getElementById('loginSection').style.display = 'none';
+            document.getElementById('emailCheckSection').style.display = 'none';
+            document.getElementById('otpVerificationSection').style.display = 'none';
+            document.getElementById('signupSection').style.display = 'none';
+            
+            document.getElementById('loginForm').style.display = 'none';
+            document.getElementById('emailCheckForm').style.display = 'none';
+            document.getElementById('otpVerificationForm').style.display = 'none';
+            document.getElementById('signupForm').style.display = 'none';
+            
+            if (formType === 'login') {
+                document.getElementById('loginSection').style.display = 'block';
+                document.getElementById('loginForm').style.display = 'block';
+            } else if (formType === 'emailCheck') {
+                document.getElementById('emailCheckSection').style.display = 'block';
+                document.getElementById('emailCheckForm').style.display = 'block';
+            } else if (formType === 'otpVerification') {
+                document.getElementById('otpVerificationSection').style.display = 'block';
+                document.getElementById('otpVerificationForm').style.display = 'block';
+            } else if (formType === 'signup') {
+                document.getElementById('signupSection').style.display = 'block';
+                document.getElementById('signupForm').style.display = 'block';
+            }
+        }
+        // Make toggleForm globally accessible for inline onclick
+        window.toggleForm = toggleForm;
+        
+        // Toggle password visibility
+        function togglePasswordVisibility(inputId, toggleId) {
+            const passwordInput = document.getElementById(inputId);
+            const toggleButton = document.getElementById(toggleId);
+            
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                toggleButton.textContent = 'লুকান';
+            } else {
+                passwordInput.type = 'password';
+                toggleButton.textContent = 'দেখুন';
+            }
+        }
+        
+        // Start OTP timer
+        function startOTPTimer() {
+            let totalSeconds = 120; // 2 minutes
+            
+            clearInterval(otpTimer);
+            document.getElementById('resendOtp').disabled = true;
+            
+            // Update timer display immediately
+            const minutes = Math.floor(totalSeconds / 60);
+            const seconds = totalSeconds % 60;
+            document.getElementById('timer').textContent = 
+                (minutes < 10 ? '0' + minutes : minutes) + ':' + 
+                (seconds < 10 ? '0' + seconds : seconds);
+            
+            otpTimer = setInterval(function() {
+                totalSeconds--;
+                
+                const minutes = Math.floor(totalSeconds / 60);
+                const seconds = totalSeconds % 60;
+                
+                document.getElementById('timer').textContent = 
+                    (minutes < 10 ? '0' + minutes : minutes) + ':' + 
+                    (seconds < 10 ? '0' + seconds : seconds);
+                
+                if (totalSeconds <= 0) {
+                    clearInterval(otpTimer);
+                    document.getElementById('resendOtp').disabled = false;
+                }
+            }, 1000);
+        }
+        
+        // লোডিং ফাংশন
+        // লোডিং স্পিনার তৈরি করুন
+        function createLoader() {
+            const loader = document.createElement('div');
+            loader.className = 'loader';
+            loader.id = 'pageLoader';
+            loader.style.zIndex = '10000'; // সর্বোচ্চ z-index
+            
+            const spinner = document.createElement('div');
+            spinner.className = 'spinner';
+            
+            loader.appendChild(spinner);
+            document.body.appendChild(loader);
+        }
+        
+        // লোডিং দেখানোর ফাংশন
+        function showLoading() {
+            if (!document.getElementById('pageLoader')) {
+                createLoader();
+            }
+            document.getElementById('pageLoader').style.display = 'flex';
+        }
+        
+        // লোডিং বন্ধ করার ফাংশন
+        function hideLoading() {
+            const loader = document.getElementById('pageLoader');
+            if (loader) {
+                loader.style.display = 'none';
+            }
+        }
+        
+        // Show error with specified message
+        function showError(elementId, message) {
+            const errorElement = document.getElementById(elementId);
+            errorElement.textContent = message;
+            errorElement.classList.add('show-error');
+        }
+        
+        // Hide error
+        function hideError(elementId) {
+            document.getElementById(elementId).classList.remove('show-error');
+        }
+        
+        // Email validation function
+        function validateEmail(email) {
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return re.test(email);
+        }
+        
+        // নোটিফিকেশন পপআপ ফাংশন - alert এর পরিবর্তে
+        function showNotification(message, type = 'success') {
+            // পূর্বের নোটিফিকেশন রিমুভ করুন
+            const existingNotification = document.getElementById('customNotification');
+            if (existingNotification) {
+                existingNotification.remove();
+            }
+            
+            // নতুন নোটিফিকেশন তৈরি করুন
+            const notification = document.createElement('div');
+            notification.id = 'customNotification';
+            notification.className = `custom-notification ${type}`;
+            
+            // নোটিফিকেশন কনটেন্ট
+            notification.innerHTML = `
+                <div class="notification-content">
+                    <span class="notification-message">${message}</span>
+                    <span class="notification-close">&times;</span>
+                </div>
+            `;
+            
+            // নোটিফিকেশন স্টাইল
+            notification.style.position = 'fixed';
+            notification.style.top = '20px';
+            notification.style.right = '20px';
+            notification.style.backgroundColor = type === 'success' ? '#4CAF50' : '#f44336';
+            notification.style.color = 'white';
+            notification.style.padding = '15px';
+            notification.style.borderRadius = '5px';
+            notification.style.boxShadow = '0 2px 10px rgba(0,0,0,0.2)';
+            notification.style.zIndex = '9999';
+            notification.style.transition = 'all 0.3s ease';
+            notification.style.opacity = '0';
+            
+            // বডিতে অ্যাড করুন
+            document.body.appendChild(notification);
+            
+            // ফেড ইন এফেক্ট
+            setTimeout(() => {
+                notification.style.opacity = '1';
+            }, 10);
+            
+            // ক্লোজ বাটন ফাংশনালিটি
+            const closeButton = notification.querySelector('.notification-close');
+            closeButton.style.marginLeft = '15px';
+            closeButton.style.cursor = 'pointer';
+            closeButton.style.fontWeight = 'bold';
+            
+            closeButton.addEventListener('click', function() {
+                notification.style.opacity = '0';
+                setTimeout(() => {
+                    notification.remove();
+                }, 300);
+            });
+            
+            // অটো ক্লোজ
+            setTimeout(() => {
+                notification.style.opacity = '0';
+                setTimeout(() => {
+                    notification.remove();
+                }, 300);
+            }, 5000);
+        }
+        
+        // মডাল ফাংশন
+        // Open modal
+        function openModal() {
+            document.getElementById('successModal').style.display = 'flex';
+        }
+        
+        // Close modal
+        function closeModal() {
+            document.getElementById('successModal').style.display = 'none';
+            toggleForm('login');
+        }
+        
+        // 4-digit OTP generate function
+        function generateOTP() {
+            generatedOTP = Math.floor(1000 + Math.random() * 9000).toString();
+            console.log('Generated OTP:', generatedOTP); // For testing, in production remove this
+            return generatedOTP;
+        }
+        
+        // Send OTP to email (simulated)
+        async function sendOTP(email, otp) {
+            showLoading();
+            try {
+                // In a real application, you would send this to your backend
+                // which would then send the OTP to the user's email
+                const response = await fetchWithTimeout(`${DB_API_URL}/send-otp`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ email, otp })
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    showNotification('OTP আপনার ইমেইলে পাঠানো হয়েছে', 'success');
+                    return true;
+                } else {
+                    showNotification('OTP পাঠাতে সমস্যা হয়েছে', 'error');
+                    return false;
+                }
+            } catch (error) {
+                console.error('Error sending OTP:', error);
+                showNotification('OTP পাঠাতে সমস্যা হয়েছে', 'error');
+                return false;
+            } finally {
+                hideLoading();
+            }
+        }
+        
+        // Validate OTP
+        function validateOTP(otp) {
+            return otp === generatedOTP;
+        }
+        
+        // Register user function
+        async function registerUser(name, email, password) {
+            showLoading();
+            try {
+                const response = await fetchWithTimeout(`${DB_API_URL}/register`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ name, email, password })
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    showNotification('রেজিস্ট্রেশন সফল হয়েছে!', 'success');
+                    document.getElementById('registrationSuccess').style.display = 'block';
+                    return true;
+                } else {
+                    showNotification(data.message || 'রেজিস্ট্রেশনে সমস্যা হয়েছে', 'error');
+                    return false;
+                }
+            } catch (error) {
+                console.error('Registration error:', error);
+                showNotification('রেজিস্ট্রেশনে সমস্যা হয়েছে', 'error');
+                return false;
+            } finally {
+                hideLoading();
+            }
+        }
+        
+        // Login user function
+        async function loginUser(email, password) {
+            showLoading();
+            try {
+                const response = await fetchWithTimeout(`${DB_API_URL}/login`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ email, password })
+                });
+                
+                const data = await response.json();
+                
+                if (data.success && data.token) {
+                    // Save token and user data
+                    localStorage.setItem('authToken', data.token);
+                    localStorage.setItem('currentUser', JSON.stringify(data.user));
+                    
+                    // Update UI
+                    checkLoginStatus();
+                    
+                    // Close login popup
+                    document.querySelector('.login-popup').classList.remove('active');
+                    document.querySelector('.blur-overlay').classList.remove('active');
+                    
+                    showNotification('সফলভাবে লগইন করা হয়েছে!', 'success');
+                    return true;
+                } else {
+                    showNotification(data.message || 'লগইনে সমস্যা হয়েছে', 'error');
+                    return false;
+                }
+            } catch (error) {
+                console.error('Login error:', error);
+                showNotification('লগইনে সমস্যা হয়েছে', 'error');
+                return false;
+            } finally {
+                hideLoading();
+            }
+        }
+        
+        // Toggle profile dropdown
+        function toggleProfileDropdown() {
+            const dropdown = document.getElementById('dropdownContent');
+            dropdown.classList.toggle('show-dropdown');
+        }
+        
+        // Close dropdown when clicking outside
+        window.addEventListener('click', function(event) {
+            const profileDropdown = document.getElementById('profileDropdown');
+            const dropdownContent = document.getElementById('dropdownContent');
+            const profileIcon = document.getElementById('profileIcon');
+            
+            if (profileDropdown.style.display !== 'none' && 
+                !profileIcon.contains(event.target) && 
+                !dropdownContent.contains(event.target)) {
+                dropdownContent.classList.remove('show-dropdown');
+            }
+        });
+        
+        // Check login status and update UI
+        function checkLoginStatus() {
+            const token = localStorage.getItem('authToken');
+            const user = JSON.parse(localStorage.getItem('currentUser'));
+            
+            const desktopLoginButton = document.getElementById('desktopLoginButton');
+            const mobileLoginButton = document.getElementById('mobileLoginButton');
+            const profileDropdown = document.getElementById('profileDropdown');
+            const profileIcon = document.getElementById('profileIcon');
+            
+            if (token && user) {
+                // User is logged in
+                if (desktopLoginButton) desktopLoginButton.style.display = 'none';
+                if (mobileLoginButton) mobileLoginButton.style.display = 'none';
+                if (profileDropdown) {
+                    profileDropdown.style.display = 'inline-block';
+                    profileIcon.textContent = user.name.charAt(0).toUpperCase();
+                }
+            } else {
+                // User is not logged in
+                if (desktopLoginButton) desktopLoginButton.style.display = 'flex';
+                if (mobileLoginButton) mobileLoginButton.style.display = 'flex';
+                if (profileDropdown) profileDropdown.style.display = 'none';
+            }
+        }
+        
+        // Handle login button click
+        const handleLogin = () => {
+            document.querySelector('.login-popup').classList.add('active');
+            document.querySelector('.blur-overlay').classList.add('active');
+            toggleForm('login');
+        };
+        
+        // Close login popup
+        const closeLoginPopup = () => {
+            document.querySelector('.login-popup').classList.remove('active');
+            document.querySelector('.blur-overlay').classList.remove('active');
+        };
+        
+        // Initialize login form
+        const initLoginForms = () => {
+            // Email Check Form Submission
+            document.getElementById('emailCheckForm').addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                const email = document.getElementById('checkEmail').value.trim();
+                
+                // Validate email
+                if (!validateEmail(email)) {
+                    showError('checkEmailError', 'অনুগ্রহ করে একটি সঠিক ইমেইল প্রদান করুন');
+                    return;
+                } else {
+                    hideError('checkEmailError');
+                }
+                
+                // Check if email already exists (simulated)
+                showLoading();
+                try {
+                    const response = await fetchWithTimeout(`${DB_API_URL}/check-email`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({ email })
+                    });
+                    
+                    const data = await response.json();
+                    
+                    if (data.exists) {
+                        showError('checkEmailError', 'এই ইমেইলটি ইতিমধ্যে ব্যবহার করা হয়েছে');
+                        return;
+                    }
+                    
+                    // Generate and send OTP
+                    const otp = generateOTP();
+                    const otpSent = await sendOTP(email, otp);
+                    
+                    if (otpSent) {
+                        currentUserEmail = email;
+                        document.getElementById('userEmail').textContent = email;
+                        toggleForm('otpVerification');
+                        startOTPTimer();
+                    }
+                } catch (error) {
+                    console.error('Error checking email:', error);
+                    showNotification('ইমেইল চেক করতে সমস্যা হয়েছে', 'error');
+                } finally {
+                    hideLoading();
+                }
+            });
+            
+            // Resend OTP button
+            document.getElementById('resendOtp').addEventListener('click', async function() {
+                const otp = generateOTP();
+                const otpSent = await sendOTP(currentUserEmail, otp);
+                
+                if (otpSent) {
+                    startOTPTimer();
+                }
+            });
+            
+            // OTP Verification Form Submission
+            document.getElementById('otpVerificationForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const otp1 = document.getElementById('otp1').value;
+                const otp2 = document.getElementById('otp2').value;
+                const otp3 = document.getElementById('otp3').value;
+                const otp4 = document.getElementById('otp4').value;
+                
+                const otp = otp1 + otp2 + otp3 + otp4;
+                
+                if (otp.length !== 4 || !validateOTP(otp)) {
+                    showError('otpError', 'অনুগ্রহ করে সঠিক অটিপি দিন');
+                    return;
+                } else {
+                    hideError('otpError');
+                    toggleForm('signup');
+                }
+            });
+            
+            // Signup Form Submission
+            document.getElementById('signupForm').addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                const name = document.getElementById('signupName').value.trim();
+                const password = document.getElementById('signupPassword').value;
+                const confirmPassword = document.getElementById('signupConfirmPassword').value;
+                
+                // Validate name
+                if (name.length < 2) {
+                    showError('signupNameError', 'নাম প্রয়োজন');
+                    return;
+                } else {
+                    hideError('signupNameError');
+                }
+                
+                // Validate password
+                if (password.length < 6) {
+                    showError('signupPasswordError', 'পাসওয়ার্ড কমপক্ষে ৬ অক্ষরের হতে হবে');
+                    return;
+                } else {
+                    hideError('signupPasswordError');
+                }
+                
+                // Validate password match
+                if (password !== confirmPassword) {
+                    showError('signupConfirmPasswordError', 'পাসওয়ার্ড মিলছে না');
+                    return;
+                } else {
+                    hideError('signupConfirmPasswordError');
+                }
+                
+                // Register user
+                const registrationSuccess = await registerUser(name, currentUserEmail, password);
+                
+                if (registrationSuccess) {
+                    openModal();
+                }
+            });
+            
+            // Login Form Submission
+            document.getElementById('loginForm').addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                const email = document.getElementById('loginEmail').value.trim();
+                const password = document.getElementById('loginPassword').value;
+                
+                // Validate email
+                if (!validateEmail(email)) {
+                    showError('loginEmailError', 'অনুগ্রহ করে একটি সঠিক ইমেইল প্রদান করুন');
+                    return;
+                } else {
+                    hideError('loginEmailError');
+                }
+                
+                // Validate password
+                if (password.length === 0) {
+                    showError('loginPasswordError', 'পাসওয়ার্ড প্রয়োজন');
+                    return;
+                } else {
+                    hideError('loginPasswordError');
+                }
+                
+                // Login user
+                await loginUser(email, password);
+            });
+            
+            // Profile dropdown toggle
+            document.getElementById('profileIcon').addEventListener('click', toggleProfileDropdown);
+            
+            // Profile link click
+            document.getElementById('profileLink').addEventListener('click', function(e) {
+                e.preventDefault();
+                // Show profile information
+                const user = JSON.parse(localStorage.getItem('currentUser'));
+                alert(`প্রোফাইল তথ্য:\nনাম: ${user.name}\nইমেইল: ${user.email}`);
+            });
+            
+            // Courses link click
+            document.getElementById('coursesLink').addEventListener('click', function(e) {
+                e.preventDefault();
+                // Show purchased courses
+                const user = JSON.parse(localStorage.getItem('currentUser'));
+                if (user.courses && user.courses.length > 0) {
+                    let coursesList = 'আপনার কোর্সসমূহ:\n';
+                    user.courses.forEach(course => {
+                        coursesList += `- ${course.name} (ট্রানজেকশন: ${course.transactionId})\n`;
+                    });
+                    alert(coursesList);
+                } else {
+                    alert('আপনার কোনো কোর্স নেই।');
+                }
+            });
+            
+            // Logout button click
+            document.getElementById('logoutButton').addEventListener('click', async function(e) {
+                e.preventDefault();
+                
+                try {
+                    const token = localStorage.getItem('authToken');
+                    
+                    if (token) {
+                        // দ্রুত লগআউট API কল (৩ সেকেন্ড টাইমআউট)
+                        const response = await fetchWithTimeout(`${DB_API_URL}/logout`, {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'Authorization': `Bearer ${token}`
+                            }
+                        }, 3000);
+                        
+                        const data = await response.json();
+                        
+                        if (data.success) {
+                            // সফল লগআউট
+                            showNotification(data.message || 'আপনি সফলভাবে লগআউট করেছেন।', 'success');
+                        } else {
+                            showNotification(data.message || 'লগআউট করতে সমস্যা হয়েছে।', 'error');
+                        }
+                    }
+                } catch (error) {
+                    console.error('Logout error:', error);
+                } finally {
+                    // সেশন স্টোরেজ থেকে ইউজার ডেটা মুছুন
+                    localStorage.removeItem('authToken');
+                    localStorage.removeItem('currentUser');
+                    
+                    // UI আপডেট করুন - দ্রুত
+                    checkLoginStatus();
+                    
+                    // Close profile dropdown
+                    document.getElementById('dropdownContent').classList.remove('show-dropdown');
+                }
+            });
+        };
+
+        return {
+            handleLogin,
+            initLoginForms,
+            checkLoginStatus
+        };
+    })();
+
     // Blur overlay effect for header/navbar/top-bar
     function setHeaderBlur(active) {
         const header = document.querySelector('.header');
@@ -1760,135 +2689,7 @@ body.dark-theme .modal-body {
         const popupObserver = new MutationObserver(updateBlurEffect);
         popupObserver.observe(loginPopup, { attributes: true, attributeFilter: ['class'] });
     }
-    </script>
-    <div class="login-popup">
-        <button class="close-login">
-            <i class="fas fa-times"></i>
-        </button>
-        <div class="container">        
-            <div id="loginSection">
-                <h1 class="title">লগইন করুন</h1>
-                
-                <div class="success-message" id="registrationSuccess">
-                    আপনার একাউন্ট সফলভাবে তৈরি হয়েছে। এখন লগইন করুন।
-                </div>
-                
-                <form id="loginForm" class="form-container" autocomplete="off">
-                    <div class="form-group">
-                        <label for="loginEmail">ইমেইল</label>
-                        <input name="login_email" id="loginEmail" placeholder="আপনার ইমেইল লিখুন">
-                        <p class="error-message" id="loginEmailError">অনুগ্রহ করে একটি সঠিক ইমেইল প্রদান করুন</p>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="loginPassword">পাসওয়ার্ড</label>
-                        <div class="password-container">
-                            <input type="password" name="login_password" id="loginPassword" placeholder="আপনার পাসওয়ার্ড লিখুন">
-                            <button type="button" class="toggle-password" onclick="togglePasswordVisibility('loginPassword', 'loginPasswordToggle')" id="loginPasswordToggle">দেখুন</button>
-                        </div>
-                        <p class="error-message" id="loginPasswordError">পাসওয়ার্ড প্রয়োজন</p>
-                    </div>
-                    
-                    <button type="submit" class="button">লগইন করুন</button>
-                    
-                    <div class="form-footer">
-                        একাউন্ট নেই? <a href="#" onclick="toggleForm('emailCheck'); return false;">নতুন একাউন্ট খুলুন</a>
-                    </div>
-                </form>
-            </div>
-            
-            <!-- Step 1: Email Check Form -->
-            <div id="emailCheckSection">
-                <h1 class="title">নতুন একাউন্ট খুলুন</h1>
-                
-                <form id="emailCheckForm" class="form-container">
-                    <div class="form-group">
-                        <label for="checkEmail">ইমেইল</label>
-                        <input type="email" id="checkEmail" placeholder="আপনার ইমেইল লিখুন">
-                        <p class="error-message" id="checkEmailError">অনুগ্রহ করে একটি সঠিক ইমেইল প্রদান করুন</p>
-                    </div>
-                    
-                    <button type="submit" class="button">এগিয়ে যান</button>
-                    
-                    <div class="form-footer">
-                        ইতিমধ্যে একাউন্ট আছে? <a href="#" onclick="toggleForm('login'); return false;">লগইন করুন</a>
-                    </div>
-                </form>
-            </div>
-            
-            <!-- Step 2: OTP Verification Form -->
-            <div id="otpVerificationSection">
-                <h1 class="title">অটিপি যাচাইকরণ</h1>
-                
-                <form id="otpVerificationForm" class="form-container">
-                    <p>আপনার ইমেইলে (<span id="userEmail"></span>) ৪ সংখ্যার অটিপি পাঠানো হয়েছে</p>
-                    
-                    <div class="otp-container">
-                        <label>অটিপি দিন</label>
-                        <div class="otp-input">
-                            <input type="text" maxlength="1" id="otp1" class="otp-digit">
-                            <input type="text" maxlength="1" id="otp2" class="otp-digit">
-                            <input type="text" maxlength="1" id="otp3" class="otp-digit">
-                            <input type="text" maxlength="1" id="otp4" class="otp-digit">
-                        </div>
-                        <p class="error-message" id="otpError">অনুগ্রহ করে সঠিক অটিপি দিন</p>
-                        
-                        <div class="timer" id="otpTimer">বাকি সময়: <span id="timer">02:00</span></div>
-                        <button type="button" class="resend-button" id="resendOtp" disabled>পুনরায় অটিপি পাঠান</button>
-                    </div>
-                    
-                    <button type="submit" class="button">যাচাই করুন</button>
-                    
-                    <div class="form-footer">
-                        <a href="#" onclick="toggleForm('emailCheck'); return false;">ফিরে যান</a>
-                    </div>
-                </form>
-            </div>
-            
-            <!-- Step 3: Complete Registration Form -->
-            <div id="signupSection">
-                <h1 class="title">রেজিস্ট্রেশন সম্পন্ন করুন</h1>
-                
-                <form id="signupForm" class="form-container">
-                    <div class="form-group">
-                        <label for="signupName">পূর্ণ নাম</label>
-                        <input type="text" id="signupName" placeholder="আপনার পূর্ণ নাম লিখুন">
-                        <p class="error-message" id="signupNameError">নাম প্রয়োজন</p>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="signupPassword">পাসওয়ার্ড</label>
-                        <div class="password-container">
-                            <input type="password" id="signupPassword" placeholder="একটি শক্তিশালী পাসওয়ার্ড লিখুন">
-                            <button type="button" class="toggle-password" onclick="togglePasswordVisibility('signupPassword', 'signupPasswordToggle')" id="signupPasswordToggle">দেখুন</button>
-                        </div>
-                        <p class="error-message" id="signupPasswordError">পাসওয়ার্ড কমপক্ষে ৬ অক্ষরের হতে হবে</p>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="signupConfirmPassword">পাসওয়ার্ড নিশ্চিত করুন</label>
-                        <div class="password-container">
-                            <input type="password" id="signupConfirmPassword" placeholder="পাসওয়ার্ড আবার লিখুন">
-                            <button type="button" class="toggle-password" onclick="togglePasswordVisibility('signupConfirmPassword', 'confirmPasswordToggle')" id="confirmPasswordToggle">দেখুন</button>
-                        </div>
-                        <p class="error-message" id="signupConfirmPasswordError">পাসওয়ার্ড মিলছে না</p>
-                    </div>
-                    
-                    <button type="submit" class="button">রেজিস্ট্রেশন সম্পন্ন করুন</button>
-                </form>
-            </div>
-        </div>
-        
-        <!-- Success Modal -->
-        <div class="modal" id="successModal">
-            <div class="modal-content">
-                <h2 class="modal-title">অভিনন্দন!</h2>
-                <p class="modal-body">আপনার রেজিস্ট্রেশন সফলভাবে সম্পন্ন হয়েছে। এখন আপনি লগইন করতে পারেন।</p>
-                <button class="modal-button" onclick="closeModal()">বুঝেছি</button>
-            </div>
-        </div>
-    </div>
-<script>
+
     // Prevent closing login-popup by clicking outside (only close with close-login)
     document.addEventListener('DOMContentLoaded', function() {
         const blurOverlay = document.getElementById('mainBlurOverlay');
@@ -1916,1069 +2717,74 @@ body.dark-theme .modal-body {
             });
         }
     });
+
+    // Initialize login forms when DOM is loaded
+    document.addEventListener('DOMContentLoaded', function() {
+        LoginModule.initLoginForms();
+        
+        // Attach login button handlers
+        const desktopLoginButton = document.getElementById('desktopLoginButton');
+        const mobileLoginButton = document.getElementById('mobileLoginButton');
+        
+        if (desktopLoginButton) {
+            desktopLoginButton.addEventListener('click', LoginModule.handleLogin);
+        }
+        
+        if (mobileLoginButton) {
+            mobileLoginButton.addEventListener('click', LoginModule.handleLogin);
+        }
+        
+        // Check initial login status
+        LoginModule.checkLoginStatus();
+    });
+
+    // Make functions globally available
+    window.togglePasswordVisibility = togglePasswordVisibility;
+    window.closeLoginPopup = LoginModule.closeLoginPopup;
 </script>
-
-    <!-- Profile Dropdown (shown when logged in) -->
-    <div class="profile-dropdown" id="profileDropdown" style="display: none; position: fixed; right: 20px; top: 20px; z-index: 1000;">
-        <div class="profile-icon" id="profileIcon">P</div>
-        <div class="dropdown-content" id="dropdownContent">
-            <a href="#" id="profileLink">প্রোফাইল</a>
-            <a href="#" id="coursesLink">আমার কোর্স</a>
-            <a href="#" id="logoutButton">লগআউট</a>
-        </div>
-    </div>
-
-    <script>
-        // ====================
-        // Language Toggle Module
-        // ====================
-        const LanguageModule = (() => {
-            const languages = {
-                en: {
-                    flag: 'https://flagcdn.com/w40/us.png',
-                    name: 'English',
-                    alt: 'English'
-                },
-                bn: {
-                    flag: 'https://flagcdn.com/w40/bd.png',
-                    name: 'বাংলা',
-                    alt: 'বাংলা'
-                }
-            };
-
-            let currentLang = 'bn';
-
-            const toggleLanguage = () => {
-                currentLang = currentLang === 'en' ? 'bn' : 'en';
-                const lang = languages[currentLang];
-                
-                // Update mobile language switcher
-                const flag = document.getElementById('flag');
-                const langText = document.getElementById('lang');
-                if (flag && langText) {
-                    flag.src = lang.flag;
-                    flag.alt = lang.alt;
-                    langText.textContent = lang.name;
-                }
-
-                // Update desktop language switcher
-                const desktopFlag = document.getElementById('desktopFlag');
-                const desktopLangText = document.getElementById('desktopLang');
-                if (desktopFlag && desktopLangText) {
-                    desktopFlag.src = lang.flag;
-                    desktopFlag.alt = lang.alt;
-                    desktopLangText.textContent = lang.name;
-                }
-
-                console.log('Language switched to:', currentLang);
-            };
-
-            return {
-                toggleLanguage
-            };
-        })();
-
-        // ====================
-        // Theme Toggle Module
-        // ====================
-        const ThemeModule = (() => {
-            const toggleTheme = () => {
-                const body = document.body;
-                const isDark = body.getAttribute('data-theme') === 'dark';
-                
-                body.setAttribute('data-theme', isDark ? 'light' : 'dark');
-                
-                // Update icon
-                const icons = document.querySelectorAll('.theme-toggle i');
-                icons.forEach(icon => {
-                    icon.className = isDark ? 'fas fa-moon' : 'fas fa-sun';
-                });
-            };
-
-            return {
-                toggleTheme
-            };
-        })();
-
-        // ====================
-        // Mobile Menu Module
-        // ====================
-        const MobileMenuModule = (() => {
-            const toggleMobileMenu = () => {
-                const mobileNavMenu = document.getElementById('mobileNavMenu');
-                const toggleIcon = document.querySelector('.mobile-toggle i');
-                
-                if (mobileNavMenu && toggleIcon) {
-                    const isActive = mobileNavMenu.classList.contains('active');
-                    
-                    if (isActive) {
-                        mobileNavMenu.classList.remove('active');
-                        toggleIcon.className = 'fas fa-bars';
-                    } else {
-                        mobileNavMenu.classList.add('active');
-                        toggleIcon.className = 'fas fa-times';
-                        // Close search bar if open
-                        SearchModule.closeMobileSearch();
-                    }
-                }
-            };
-
-            return {
-                toggleMobileMenu
-            };
-        })();
-
-        // ====================
-        // Search Module
-        // ====================
-        const SearchModule = (() => {
-            const toggleMobileSearch = () => {
-                const searchBar = document.getElementById('mobileSearchBar');
-                const searchInput = document.getElementById('mobileSearchInput');
-                
-                if (searchBar) {
-                    const isActive = searchBar.classList.contains('active');
-                    
-                    if (isActive) {
-                        closeMobileSearch();
-                    } else {
-                        searchBar.classList.add('active');
-                        // Close mobile menu if open
-                        const mobileNavMenu = document.getElementById('mobileNavMenu');
-                        const toggleIcon = document.querySelector('.mobile-toggle i');
-                        if (mobileNavMenu && mobileNavMenu.classList.contains('active')) {
-                            mobileNavMenu.classList.remove('active');
-                            if (toggleIcon) toggleIcon.className = 'fas fa-bars';
-                        }
-                        // Focus on search input
-                        setTimeout(() => {
-                            if (searchInput) searchInput.focus();
-                        }, 300);
-                    }
-                }
-            };
-
-            const closeMobileSearch = () => {
-                const searchBar = document.getElementById('mobileSearchBar');
-                const searchInput = document.getElementById('mobileSearchInput');
-                
-                if (searchBar) {
-                    searchBar.classList.remove('active');
-                    if (searchInput) searchInput.value = '';
-                }
-            };
-
-            const handleSearch = (query) => {
-                if (query && query.trim()) {
-                    alert(`খুঁজছেন: "${query}"`);
-                    console.log('Searching for:', query);
-                }
-            };
-
-            return {
-                toggleMobileSearch,
-                closeMobileSearch,
-                handleSearch
-            };
-        })();
-
-        // ====================
-        // Login Module
-        // ====================
-        const LoginModule = (() => {
-            // ডেটাবেস URL (এটি আপনার বেকেন্ড API URL দিয়ে প্রতিস্থাপন করুন)
-            const DB_API_URL = 'https://tia-backend-ydym.onrender.com/api';
-            
-            // গ্লোবাল ভেরিয়েবল
-            let otpTimer;
-            let tokenRefreshInterval;
-            let currentUserEmail = '';
-            let generatedOTP = '';
-            
-            // অপ্টিমাইজড Timeout - ৫ সেকেন্ড করা হয়েছে ১০ সেকেন্ডের পরিবর্তে
-            const fetchWithTimeout = async (url, options, timeout = 5000) => {
-                const controller = new AbortController();
-                const timeoutId = setTimeout(() => controller.abort(), timeout);
-
-                try {
-                    const response = await fetch(url, {
-                        ...options,
-                        signal: controller.signal
-                    });
-                    clearTimeout(timeoutId);
-                    return response;
-                } catch (error) {
-                    clearTimeout(timeoutId);
-                    if (error.name === 'AbortError') {
-                        throw new Error('রিকোয়েস্ট টাইমআউট হয়েছে');
-                    }
-                    throw error;
-                }
-            };
-
-            // Toggle between forms
-            function toggleForm(formType) {
-                document.getElementById('loginSection').style.display = 'none';
-                document.getElementById('emailCheckSection').style.display = 'none';
-                document.getElementById('otpVerificationSection').style.display = 'none';
-                document.getElementById('signupSection').style.display = 'none';
-                
-                document.getElementById('loginForm').style.display = 'none';
-                document.getElementById('emailCheckForm').style.display = 'none';
-                document.getElementById('otpVerificationForm').style.display = 'none';
-                document.getElementById('signupForm').style.display = 'none';
-                
-                if (formType === 'login') {
-                    document.getElementById('loginSection').style.display = 'block';
-                    document.getElementById('loginForm').style.display = 'block';
-                } else if (formType === 'emailCheck') {
-                    document.getElementById('emailCheckSection').style.display = 'block';
-                    document.getElementById('emailCheckForm').style.display = 'block';
-                } else if (formType === 'otpVerification') {
-                    document.getElementById('otpVerificationSection').style.display = 'block';
-                    document.getElementById('otpVerificationForm').style.display = 'block';
-                } else if (formType === 'signup') {
-                    document.getElementById('signupSection').style.display = 'block';
-                    document.getElementById('signupForm').style.display = 'block';
-                }
-            }
-            // Make toggleForm globally accessible for inline onclick
-            window.toggleForm = toggleForm;
-            
-            // Toggle password visibility
-            function togglePasswordVisibility(inputId, toggleId) {
-                const passwordInput = document.getElementById(inputId);
-                const toggleButton = document.getElementById(toggleId);
-                
-                if (passwordInput.type === 'password') {
-                    passwordInput.type = 'text';
-                    toggleButton.textContent = 'লুকান';
-                } else {
-                    passwordInput.type = 'password';
-                    toggleButton.textContent = 'দেখুন';
-                }
-            }
-            
-            // Start OTP timer
-            function startOTPTimer() {
-                let totalSeconds = 120; // 2 minutes
-                
-                clearInterval(otpTimer);
-                document.getElementById('resendOtp').disabled = true;
-                
-                // Update timer display immediately
-                const minutes = Math.floor(totalSeconds / 60);
-                const seconds = totalSeconds % 60;
-                document.getElementById('timer').textContent = 
-                    (minutes < 10 ? '0' + minutes : minutes) + ':' + 
-                    (seconds < 10 ? '0' + seconds : seconds);
-                
-                otpTimer = setInterval(function() {
-                    totalSeconds--;
-                    
-                    const minutes = Math.floor(totalSeconds / 60);
-                    const seconds = totalSeconds % 60;
-                    
-                    document.getElementById('timer').textContent = 
-                        (minutes < 10 ? '0' + minutes : minutes) + ':' + 
-                        (seconds < 10 ? '0' + seconds : seconds);
-                    
-                    if (totalSeconds <= 0) {
-                        clearInterval(otpTimer);
-                        document.getElementById('resendOtp').disabled = false;
-                    }
-                }, 1000);
-            }
-            
-            // লোডিং ফাংশন
-            // লোডিং স্পিনার তৈরি করুন
-            function createLoader() {
-                const loader = document.createElement('div');
-                loader.className = 'loader';
-                loader.id = 'pageLoader';
-                
-                const spinner = document.createElement('div');
-                spinner.className = 'spinner';
-                
-                loader.appendChild(spinner);
-                document.body.appendChild(loader);
-            }
-            
-            // লোডিং দেখানোর ফাংশন
-            function showLoading() {
-                if (!document.getElementById('pageLoader')) {
-                    createLoader();
-                }
-                document.getElementById('pageLoader').style.display = 'flex';
-            }
-            
-            // লোডিং বন্ধ করার ফাংশন
-            function hideLoading() {
-                const loader = document.getElementById('pageLoader');
-                if (loader) {
-                    loader.style.display = 'none';
-                }
-            }
-            
-            // Show error with specified message
-            function showError(elementId, message) {
-                const errorElement = document.getElementById(elementId);
-                errorElement.textContent = message;
-                errorElement.classList.add('show-error');
-            }
-            
-            // Hide error
-            function hideError(elementId) {
-                document.getElementById(elementId).classList.remove('show-error');
-            }
-            
-            // Email validation function
-            function validateEmail(email) {
-                const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                return re.test(email);
-            }
-            
-            // নোটিফিকেশন পপআপ ফাংশন - alert এর পরিবর্তে
-            function showNotification(message, type = 'success') {
-                // পূর্বের নোটিফিকেশন রিমুভ করুন
-                const existingNotification = document.getElementById('customNotification');
-                if (existingNotification) {
-                    existingNotification.remove();
-                }
-                
-                // নতুন নোটিফিকেশন তৈরি করুন
-                const notification = document.createElement('div');
-                notification.id = 'customNotification';
-                notification.className = `custom-notification ${type}`;
-                
-                // নোটিফিকেশন কনটেন্ট
-                notification.innerHTML = `
-                    <div class="notification-content">
-                        <span class="notification-message">${message}</span>
-                        <span class="notification-close">&times;</span>
-                    </div>
-                `;
-                
-                // নোটিফিকেশন স্টাইল
-                notification.style.position = 'fixed';
-                notification.style.top = '20px';
-                notification.style.right = '20px';
-                notification.style.backgroundColor = type === 'success' ? '#4CAF50' : '#f44336';
-                notification.style.color = 'white';
-                notification.style.padding = '15px';
-                notification.style.borderRadius = '5px';
-                notification.style.boxShadow = '0 2px 10px rgba(0,0,0,0.2)';
-                notification.style.zIndex = '9999';
-                notification.style.transition = 'all 0.3s ease';
-                notification.style.opacity = '0';
-                
-                // বডিতে অ্যাড করুন
-                document.body.appendChild(notification);
-                
-                // ফেড ইন এফেক্ট
-                setTimeout(() => {
-                    notification.style.opacity = '1';
-                }, 10);
-                
-                // ক্লোজ বাটন ফাংশনালিটি
-                const closeButton = notification.querySelector('.notification-close');
-                closeButton.style.marginLeft = '15px';
-                closeButton.style.cursor = 'pointer';
-                closeButton.style.fontWeight = 'bold';
-                
-                closeButton.addEventListener('click', function() {
-                    notification.style.opacity = '0';
-                    setTimeout(() => {
-                        notification.remove();
-                    }, 300);
-                });
-                
-                // অটো ক্লোজ
-                setTimeout(() => {
-                    notification.style.opacity = '0';
-                    setTimeout(() => {
-                        notification.remove();
-                    }, 300);
-                }, 5000);
-            }
-            
-            // মডাল ফাংশন
-            // Open modal
-            function openModal() {
-                document.getElementById('successModal').style.display = 'flex';
-            }
-            
-            // Close modal
-            function closeModal() {
-                document.getElementById('successModal').style.display = 'none';
-                toggleForm('login');
-            }
-            
-            // 4-digit OTP generate function
-            function generateOTP() {
-                generatedOTP = Math.floor(1000 + Math.random() * 9000).toString();
-                console.log('Generated OTP:', generatedOTP); // For testing, in production remove this
-                return generatedOTP;
-            }
-            
-            // Send OTP to email (simulated)
-            async function sendOTP(email, otp) {
-                showLoading();
-                try {
-                    // In a real application, you would send this to your backend
-                    // which would then send the OTP to the user's email
-                    const response = await fetchWithTimeout(`${DB_API_URL}/send-otp`, {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify({ email, otp })
-                    });
-                    
-                    const data = await response.json();
-                    
-                    if (data.success) {
-                        showNotification('OTP আপনার ইমেইলে পাঠানো হয়েছে', 'success');
-                        return true;
-                    } else {
-                        showNotification('OTP পাঠাতে সমস্যা হয়েছে', 'error');
-                        return false;
-                    }
-                } catch (error) {
-                    console.error('Error sending OTP:', error);
-                    showNotification('OTP পাঠাতে সমস্যা হয়েছে', 'error');
-                    return false;
-                } finally {
-                    hideLoading();
-                }
-            }
-            
-            // Validate OTP
-            function validateOTP(otp) {
-                return otp === generatedOTP;
-            }
-            
-            // Register user function
-            async function registerUser(name, email, password) {
-                showLoading();
-                try {
-                    const response = await fetchWithTimeout(`${DB_API_URL}/register`, {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify({ name, email, password })
-                    });
-                    
-                    const data = await response.json();
-                    
-                    if (data.success) {
-                        showNotification('রেজিস্ট্রেশন সফল হয়েছে!', 'success');
-                        document.getElementById('registrationSuccess').style.display = 'block';
-                        return true;
-                    } else {
-                        showNotification(data.message || 'রেজিস্ট্রেশনে সমস্যা হয়েছে', 'error');
-                        return false;
-                    }
-                } catch (error) {
-                    console.error('Registration error:', error);
-                    showNotification('রেজিস্ট্রেশনে সমস্যা হয়েছে', 'error');
-                    return false;
-                } finally {
-                    hideLoading();
-                }
-            }
-            
-            // Login user function
-            async function loginUser(email, password) {
-                showLoading();
-                try {
-                    const response = await fetchWithTimeout(`${DB_API_URL}/login`, {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify({ email, password })
-                    });
-                    
-                    const data = await response.json();
-                    
-                    if (data.success && data.token) {
-                        // Save token and user data
-                        localStorage.setItem('authToken', data.token);
-                        localStorage.setItem('currentUser', JSON.stringify(data.user));
-                        
-                        // Update UI
-                        checkLoginStatus();
-                        
-                        // Close login popup
-                        document.querySelector('.login-popup').classList.remove('active');
-                        document.querySelector('.blur-overlay').classList.remove('active');
-                        
-                        showNotification('সফলভাবে লগইন করা হয়েছে!', 'success');
-                        return true;
-                    } else {
-                        showNotification(data.message || 'লগইনে সমস্যা হয়েছে', 'error');
-                        return false;
-                    }
-                } catch (error) {
-                    console.error('Login error:', error);
-                    showNotification('লগইনে সমস্যা হয়েছে', 'error');
-                    return false;
-                } finally {
-                    hideLoading();
-                }
-            }
-            
-            // Toggle profile dropdown
-            function toggleProfileDropdown() {
-                const dropdown = document.getElementById('dropdownContent');
-                dropdown.classList.toggle('show-dropdown');
-            }
-            
-            // Close dropdown when clicking outside
-            window.addEventListener('click', function(event) {
-                const profileDropdown = document.getElementById('profileDropdown');
-                const dropdownContent = document.getElementById('dropdownContent');
-                const profileIcon = document.getElementById('profileIcon');
-                
-                if (profileDropdown.style.display !== 'none' && 
-                    !profileIcon.contains(event.target) && 
-                    !dropdownContent.contains(event.target)) {
-                    dropdownContent.classList.remove('show-dropdown');
-                }
-            });
-            
-            // Check login status and update UI
-            function checkLoginStatus() {
-                const token = localStorage.getItem('authToken');
-                const user = JSON.parse(localStorage.getItem('currentUser'));
-                
-                const desktopLoginButton = document.getElementById('desktopLoginButton');
-                const mobileLoginButton = document.getElementById('mobileLoginButton');
-                const profileDropdown = document.getElementById('profileDropdown');
-                const profileIcon = document.getElementById('profileIcon');
-                
-                if (token && user) {
-                    // User is logged in
-                    if (desktopLoginButton) desktopLoginButton.style.display = 'none';
-                    if (mobileLoginButton) mobileLoginButton.style.display = 'none';
-                    if (profileDropdown) {
-                        profileDropdown.style.display = 'inline-block';
-                        profileIcon.textContent = user.name.charAt(0).toUpperCase();
-                    }
-                } else {
-                    // User is not logged in
-                    if (desktopLoginButton) desktopLoginButton.style.display = 'flex';
-                    if (mobileLoginButton) mobileLoginButton.style.display = 'flex';
-                    if (profileDropdown) profileDropdown.style.display = 'none';
-                }
-            }
-            
-            // Handle login button click
-            const handleLogin = () => {
-                document.querySelector('.login-popup').classList.add('active');
-                document.querySelector('.blur-overlay').classList.add('active');
-                toggleForm('login');
-            };
-            
-            // Close login popup
-            const closeLoginPopup = () => {
-                document.querySelector('.login-popup').classList.remove('active');
-                document.querySelector('.blur-overlay').classList.remove('active');
-            };
-            
-            // Initialize login form
-            const initLoginForms = () => {
-                // Email Check Form Submission
-                document.getElementById('emailCheckForm').addEventListener('submit', async function(e) {
-                    e.preventDefault();
-                    
-                    const email = document.getElementById('checkEmail').value.trim();
-                    
-                    // Validate email
-                    if (!validateEmail(email)) {
-                        showError('checkEmailError', 'অনুগ্রহ করে একটি সঠিক ইমেইল প্রদান করুন');
-                        return;
-                    } else {
-                        hideError('checkEmailError');
-                    }
-                    
-                    // Check if email already exists (simulated)
-                    showLoading();
-                    try {
-                        const response = await fetchWithTimeout(`${DB_API_URL}/check-email`, {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/json',
-                            },
-                            body: JSON.stringify({ email })
-                        });
-                        
-                        const data = await response.json();
-                        
-                        if (data.exists) {
-                            showError('checkEmailError', 'এই ইমেইলটি ইতিমধ্যে ব্যবহার করা হয়েছে');
-                            return;
-                        }
-                        
-                        // Generate and send OTP
-                        const otp = generateOTP();
-                        const otpSent = await sendOTP(email, otp);
-                        
-                        if (otpSent) {
-                            currentUserEmail = email;
-                            document.getElementById('userEmail').textContent = email;
-                            toggleForm('otpVerification');
-                            startOTPTimer();
-                        }
-                    } catch (error) {
-                        console.error('Error checking email:', error);
-                        showNotification('ইমেইল চেক করতে সমস্যা হয়েছে', 'error');
-                    } finally {
-                        hideLoading();
-                    }
-                });
-                
-                // Resend OTP button
-                document.getElementById('resendOtp').addEventListener('click', async function() {
-                    const otp = generateOTP();
-                    const otpSent = await sendOTP(currentUserEmail, otp);
-                    
-                    if (otpSent) {
-                        startOTPTimer();
-                    }
-                });
-                
-                // OTP Verification Form Submission
-                document.getElementById('otpVerificationForm').addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    
-                    const otp1 = document.getElementById('otp1').value;
-                    const otp2 = document.getElementById('otp2').value;
-                    const otp3 = document.getElementById('otp3').value;
-                    const otp4 = document.getElementById('otp4').value;
-                    
-                    const otp = otp1 + otp2 + otp3 + otp4;
-                    
-                    if (otp.length !== 4 || !validateOTP(otp)) {
-                        showError('otpError', 'অনুগ্রহ করে সঠিক অটিপি দিন');
-                        return;
-                    } else {
-                        hideError('otpError');
-                        toggleForm('signup');
-                    }
-                });
-                
-                // Signup Form Submission
-                document.getElementById('signupForm').addEventListener('submit', async function(e) {
-                    e.preventDefault();
-                    
-                    const name = document.getElementById('signupName').value.trim();
-                    const password = document.getElementById('signupPassword').value;
-                    const confirmPassword = document.getElementById('signupConfirmPassword').value;
-                    
-                    // Validate name
-                    if (name.length < 2) {
-                        showError('signupNameError', 'নাম প্রয়োজন');
-                        return;
-                    } else {
-                        hideError('signupNameError');
-                    }
-                    
-                    // Validate password
-                    if (password.length < 6) {
-                        showError('signupPasswordError', 'পাসওয়ার্ড কমপক্ষে ৬ অক্ষরের হতে হবে');
-                        return;
-                    } else {
-                        hideError('signupPasswordError');
-                    }
-                    
-                    // Validate password match
-                    if (password !== confirmPassword) {
-                        showError('signupConfirmPasswordError', 'পাসওয়ার্ড মিলছে না');
-                        return;
-                    } else {
-                        hideError('signupConfirmPasswordError');
-                    }
-                    
-                    // Register user
-                    const registrationSuccess = await registerUser(name, currentUserEmail, password);
-                    
-                    if (registrationSuccess) {
-                        openModal();
-                    }
-                });
-                
-                // Login Form Submission
-                document.getElementById('loginForm').addEventListener('submit', async function(e) {
-                    e.preventDefault();
-                    
-                    const email = document.getElementById('loginEmail').value.trim();
-                    const password = document.getElementById('loginPassword').value;
-                    
-                    // Validate email
-                    if (!validateEmail(email)) {
-                        showError('loginEmailError', 'অনুগ্রহ করে একটি সঠিক ইমেইল প্রদান করুন');
-                        return;
-                    } else {
-                        hideError('loginEmailError');
-                    }
-                    
-                    // Validate password
-                    if (password.length === 0) {
-                        showError('loginPasswordError', 'পাসওয়ার্ড প্রয়োজন');
-                        return;
-                    } else {
-                        hideError('loginPasswordError');
-                    }
-                    
-                    // Login user
-                    await loginUser(email, password);
-                });
-                
-                // Close login popup button
-                document.querySelector('.close-login').addEventListener('click', closeLoginPopup);
-                
-                // Close when clicking on blur overlay
-                document.querySelector('.blur-overlay').addEventListener('click', closeLoginPopup);
-                
-                // Profile dropdown toggle
-                document.getElementById('profileIcon').addEventListener('click', toggleProfileDropdown);
-                
-                // Profile link click
-                document.getElementById('profileLink').addEventListener('click', function(e) {
-                    e.preventDefault();
-                    // Show profile information
-                    const user = JSON.parse(localStorage.getItem('currentUser'));
-                    alert(`প্রোফাইল তথ্য:\nনাম: ${user.name}\nইমেইল: ${user.email}`);
-                });
-                
-                // Courses link click
-                document.getElementById('coursesLink').addEventListener('click', function(e) {
-                    e.preventDefault();
-                    // Show purchased courses
-                    const user = JSON.parse(localStorage.getItem('currentUser'));
-                    if (user.courses && user.courses.length > 0) {
-                        let coursesList = 'আপনার কোর্সসমূহ:\n';
-                        user.courses.forEach(course => {
-                            coursesList += `- ${course.name} (ট্রানজেকশন: ${course.transactionId})\n`;
-                        });
-                        alert(coursesList);
-                    } else {
-                        alert('আপনার কোনো কোর্স নেই।');
-                    }
-                });
-                
-                // Logout button click
-                document.getElementById('logoutButton').addEventListener('click', async function(e) {
-                    e.preventDefault();
-                    
-                    try {
-                        const token = localStorage.getItem('authToken');
-                        
-                        if (token) {
-                            // দ্রুত লগআউট API কল (৩ সেকেন্ড টাইমআউট)
-                            const response = await fetchWithTimeout(`${DB_API_URL}/logout`, {
-                                method: 'POST',
-                                headers: {
-                                    'Content-Type': 'application/json',
-                                    'Authorization': `Bearer ${token}`
-                                }
-                            }, 3000);
-                            
-                            const data = await response.json();
-                            
-                            if (data.success) {
-                                // সফল লগআউট
-                                showNotification(data.message || 'আপনি সফলভাবে লগআউট করেছেন।', 'success');
-                            } else {
-                                showNotification(data.message || 'লগআউট করতে সমস্যা হয়েছে।', 'error');
-                            }
-                        }
-                    } catch (error) {
-                        console.error('Logout error:', error);
-                    } finally {
-                        // সেশন স্টোরেজ থেকে ইউজার ডেটা মুছুন
-                        localStorage.removeItem('authToken');
-                        localStorage.removeItem('currentUser');
-                        
-                        // UI আপডেট করুন - দ্রুত
-                        checkLoginStatus();
-                        
-                        // Close profile dropdown
-                        document.getElementById('dropdownContent').classList.remove('show-dropdown');
-                    }
-                });
-            };
-
-            return {
-                handleLogin,
-                initLoginForms,
-                checkLoginStatus
-            };
-        })();
-
-        // ====================
-        // Dropdown Module
-        // ====================
-        const DropdownModule = (() => {
-            const toggleDropdown = (element) => {
-                const dropdown = element.querySelector('.dropdown-content');
-                if (dropdown) {
-                    const isVisible = dropdown.style.display === 'block';
-                    dropdown.style.display = isVisible ? 'none' : 'block';
-                }
-            };
-
-            return {
-                toggleDropdown
-            };
-        })();
-
-        // ====================
-        // Scroll Module
-        // ====================
-        const ScrollModule = (() => {
-            let lastScrollTop = 0;
-            let isScrolling = false;
-            let scrollStartPosition = 0;
-
-            const initScrollHide = () => {
-                window.addEventListener('scroll', () => {
-                    const topBar = document.getElementById('topBar');
-                    if (topBar && window.innerWidth <= 1080) {
-                        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-                        
-                        if (!isScrolling) {
-                            isScrolling = true;
-                            scrollStartPosition = scrollTop;
-                        }
-                        
-                        if (scrollTop > 0 && scrollTop > scrollStartPosition) {
-                            topBar.classList.add('hidden');
-                        }
-                        
-                        if (scrollTop === 0) {
-                            topBar.classList.remove('hidden');
-                            isScrolling = false;
-                        }
-                        
-                        lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
-                    }
-                });
-
-                // Reset isScrolling when scroll stops
-                let scrollTimeout;
-                window.addEventListener('scroll', () => {
-                    clearTimeout(scrollTimeout);
-                    scrollTimeout = setTimeout(() => {
-                        if (window.pageYOffset === 0) {
-                            isScrolling = false;
-                        }
-                    }, 150);
-                });
-            };
-
-            const initNavbarScrollEffect = () => {
-                window.addEventListener('scroll', function() {
-                    const navbar = document.querySelector('.mobile-navbar');
-                    if (navbar && window.innerWidth <= 1080) {
-                        if (window.scrollY > 50) {
-                            navbar.classList.add('fixed');
-                        } else {
-                            navbar.classList.remove('fixed');
-                        }
-                    }
-                });
-            };
-
-            return {
-                initScrollHide,
-                initNavbarScrollEffect
-            };
-        })();
-
-        // ====================
-        // Navigation Module
-        // ====================
-        const NavigationModule = (() => {
-            const setActiveNavLink = (clickedLink) => {
-                document.querySelectorAll('.nav-link').forEach(link => {
-                    link.classList.remove('active');
-                });
-                clickedLink.classList.add('active');
-            };
-
-            const initNavLinks = () => {
-                document.querySelectorAll('.nav-link').forEach(link => {
-                    link.addEventListener('click', function(e) {
-                        if (!this.parentElement.classList.contains('dropdown')) {
-                            setActiveNavLink(this);
-                        }
-                    });
-                });
-            };
-
-            return {
-                initNavLinks
-            };
-        })();
-
-        // ====================
-        // Initialize All Modules
-        // ====================
-        document.addEventListener('DOMContentLoaded', () => {
-            // Initialize search functionality
-            const searchInput = document.getElementById('searchInput');
-            if (searchInput) {
-                searchInput.addEventListener('keypress', (event) => {
-                    if (event.key === 'Enter') {
-                        SearchModule.handleSearch(searchInput.value);
-                    }
-                });
-            }
-
-            const mobileSearchInput = document.getElementById('mobileSearchInput');
-            if (mobileSearchInput) {
-                mobileSearchInput.addEventListener('keypress', (event) => {
-                    if (event.key === 'Enter') {
-                        SearchModule.handleSearch(mobileSearchInput.value);
-                        SearchModule.closeMobileSearch();
-                    }
-                });
-            }
-
-            // Initialize login forms
-            LoginModule.initLoginForms();
-            
-            // Initialize login buttons
-            const desktopLoginButton = document.getElementById('desktopLoginButton');
-            const mobileLoginButton = document.getElementById('mobileLoginButton');
-            if (desktopLoginButton) {
-                desktopLoginButton.addEventListener('click', LoginModule.handleLogin);
-            }
-            if (mobileLoginButton) {
-                mobileLoginButton.addEventListener('click', LoginModule.handleLogin);
-            }
-
-            // Initialize scroll effects
-            ScrollModule.initScrollHide();
-            ScrollModule.initNavbarScrollEffect();
-
-            // Initialize navigation
-            NavigationModule.initNavLinks();
-
-            // Initialize smooth scrolling for anchor links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const target = document.querySelector(this.getAttribute('href'));
-                    if (target) {
-                        target.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
-                    }
-                });
-            });
-
-            // Initialize keyboard navigation support
-            document.addEventListener('keydown', (event) => {
-                if (event.key === 'Escape') {
-                    const mobileNavMenu = document.getElementById('mobileNavMenu');
-                    const mobileSearchBar = document.getElementById('mobileSearchBar');
-                    const toggleIcon = document.querySelector('.mobile-toggle i');
-                    
-                    if (mobileNavMenu && mobileNavMenu.classList.contains('active')) {
-                        mobileNavMenu.classList.remove('active');
-                        if (toggleIcon) {
-                            toggleIcon.className = 'fas fa-bars';
-                        }
-                    }
-
-                    if (mobileSearchBar && mobileSearchBar.classList.contains('active')) {
-                        SearchModule.closeMobileSearch();
-                    }
-                }
-            });
-
-            // Initialize language switcher keyboard support
-            document.querySelectorAll('.language-switcher').forEach(switcher => {
-                switcher.addEventListener('keypress', (event) => {
-                    if (event.key === 'Enter' || event.key === ' ') {
-                        event.preventDefault();
-                        LanguageModule.toggleLanguage();
-                    }
-                });
-            });
-
-            // Initialize resize listener
-            window.addEventListener('resize', () => {
-                const mobileNavMenu = document.getElementById('mobileNavMenu');
-                const mobileSearchBar = document.getElementById('mobileSearchBar');
-                const toggleIcon = document.querySelector('.mobile-toggle i');
-                
-                if (window.innerWidth > 1080) {
-                    if (mobileNavMenu) {
-                        mobileNavMenu.classList.remove('active');
-                    }
-                    if (mobileSearchBar) {
-                        mobileSearchBar.classList.remove('active');
-                    }
-                    if (toggleIcon) {
-                        toggleIcon.className = 'fas fa-bars';
-                    }
-                }
-            });
-            
-            // Check login status on page load
-            LoginModule.checkLoginStatus();
-        });
-
-        // ====================
-        // Global Functions for HTML onClick
-        // ====================
-        function toggleLanguage() {
-            LanguageModule.toggleLanguage();
-        }
-
-        function toggleTheme() {
-            ThemeModule.toggleTheme();
-        }
-
-        function toggleMobileMenu() {
-            MobileMenuModule.toggleMobileMenu();
-        }
-
-        function toggleMobileSearch() {
-            SearchModule.toggleMobileSearch();
-        }
-
-        function closeMobileSearch() {
-            SearchModule.closeMobileSearch();
-        }
-
-        function toggleDropdown(element) {
-            DropdownModule.toggleDropdown(element);
-        }
-    </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<style>
+/* Close (cancel) button style for login popup */
+.close-login {
+    position: absolute;
+    top: 18px;
+    right: 24px;
+    background: none;
+    border: none;
+    color: #888;
+    font-size: 26px;
+    cursor: pointer;
+    z-index: 1003;
+    transition: transform 0.25s cubic-bezier(.68,-0.55,.27,1.55), color 0.2s;
+    outline: none;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.close-login:hover {
+    color: #6A35F2;
+    transform: rotate(90deg) scale(1.2);
+}
+.close-login:active {
+    color: #43a047;
+    transform: scale(0.95);
+}
+</style>
+<script>
+// Toggle password visibility (works for all password fields)
+function togglePasswordVisibility(inputId, toggleId) {
+    const passwordInput = document.getElementById(inputId);
+    const toggleButton = document.getElementById(toggleId);
+    if (!passwordInput || !toggleButton) return;
+    if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        toggleButton.textContent = 'লুকান';
+    } else {
+        passwordInput.type = 'password';
+        toggleButton.textContent = 'দেখুন';
+    }
+}
+</script>
 
 
 

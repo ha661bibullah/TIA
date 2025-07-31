@@ -3,7 +3,6 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const mongoose = require('mongoose');
-const path = require('path');
 const nodemailer = require('nodemailer');
 const rateLimit = require('express-rate-limit');
 const { v4: uuidv4 } = require('uuid');
@@ -12,11 +11,11 @@ const bcrypt = require('bcryptjs');
 const helmet = require('helmet');
 const jwt = require('jsonwebtoken');
 
-// Initialize Express app
+// Initialize Express
 const app = express();
 const PORT = process.env.PORT || 5000;
-const saltRounds = 10;
-const JWT_SECRET = process.env.JWT_SECRET || 'your-secret-key';
+const JWT_SECRET = process.env.JWT_SECRET || 'your-strong-secret-key-here';
+const OTP_EXPIRE_MINUTES = 2; // ফ্রন্টএন্ডের সাথে মিলিয়ে ২ মিনিট
 
 // Enhanced Security Middleware
 app.use(helmet());
@@ -26,17 +25,16 @@ app.use((req, res, next) => {
   next();
 });
 
-// CORS Configuration - Add your frontend domains
+// CORS Configuration
 const corsOptions = {
   origin: [
     'https://iridescent-platypus-6f94e4.netlify.app',
     'http://localhost:3000',
     'http://localhost:5500',
-    'https://tia-backend-ydym.onrender.com' // Add your Render frontend URL
+    'https://tia-backend-ydym.onrender.com'
   ],
   methods: ['GET', 'POST', 'PATCH'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
-  optionsSuccessStatus: 200
+  allowedHeaders: ['Content-Type', 'Authorization']
 };
 app.use(cors(corsOptions));
 
@@ -47,10 +45,10 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/talimul_i
   useCreateIndex: true,
   useFindAndModify: false
 })
-.then(() => console.log('MongoDB connected successfully'))
-.catch(err => console.error('MongoDB connection error:', err));
+.then(() => console.log('✅ MongoDB Connected'))
+.catch(err => console.error('❌ MongoDB Connection Error:', err));
 
-// Email Transporter Configuration
+// Email Transporter
 const transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
@@ -68,106 +66,102 @@ app.use(bodyParser.urlencoded({ extended: true, limit: '10kb' }));
 
 // Rate Limiting
 const apiLimiter = rateLimit({
-  windowMs: 15 * 60 * 1000,
-  max: 100,
-  message: 'Too many requests from this IP, please try again later'
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 100
 });
 
 const otpLimiter = rateLimit({
   windowMs: 15 * 60 * 1000,
   max: 3,
-  message: 'Too many OTP requests from this IP, please try again later'
+  message: 'প্রতি ১৫ মিনিটে সর্বোচ্চ ৩ বার OTP রিকোয়েস্ট করতে পারবেন'
 });
 
 app.use('/api/', apiLimiter);
 
 // Database Models
-const paymentSchema = new mongoose.Schema({
-  name: { type: String, required: [true, 'Name is required'] },
-  email: { 
-    type: String, 
-    required: [true, 'Email is required'],
-    validate: [validator.isEmail, 'Please provide a valid email']
-  },
-  phone: { 
-    type: String, 
-    required: [true, 'Phone number is required'],
-    validate: {
-      validator: function(v) {
-        return /^[0-9]{10,15}$/.test(v);
-      },
-      message: 'Please provide a valid phone number'
-    }
-  },
-  paymentMethod: { type: String, required: true, enum: ['bkash', 'nagad', 'card'] },
-  txnId: { type: String, required: true },
-  courseId: { type: String, required: true },
-  amount: { type: Number, required: true, min: 0 },
-  currency: { type: String, default: 'BDT' },
-  status: { type: String, default: 'pending', enum: ['pending', 'approved', 'rejected'] },
-  date: { type: Date, default: Date.now }
-});
-
 const userSchema = new mongoose.Schema({
-  name: { type: String, required: [true, 'Name is required'] },
+  name: { 
+    type: String, 
+    required: [true, 'নাম প্রদান করুন'],
+    trim: true
+  },
   email: { 
     type: String, 
-    required: [true, 'Email is required'],
+    required: [true, 'ইমেইল প্রদান করুন'],
     unique: true,
-    validate: [validator.isEmail, 'Please provide a valid email'],
-    lowercase: true
+    lowercase: true,
+    validate: [validator.isEmail, 'সঠিক ইমেইল দিন']
   },
   password: { 
     type: String, 
-    required: [true, 'Password is required'],
-    minlength: [6, 'Password must be at least 6 characters'],
+    required: [true, 'পাসওয়ার্ড দিন'],
+    minlength: [6, 'পাসওয়ার্ড কমপক্ষে ৬ অক্ষরের হতে হবে'],
     select: false
   },
-  phone: { 
-    type: String,
-    validate: {
-      validator: function(v) {
-        return /^[0-9]{10,15}$/.test(v);
-      },
-      message: 'Please provide a valid phone number'
-    }
+  createdAt: { 
+    type: Date, 
+    default: Date.now 
   },
-  createdAt: { type: Date, default: Date.now },
-  role: { type: String, default: 'user', enum: ['user', 'admin'] },
-  courses: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Course' }]
+  courses: [{ 
+    type: mongoose.Schema.Types.ObjectId, 
+    ref: 'Course' 
+  }]
 });
 
 const otpSchema = new mongoose.Schema({
-  email: { type: String, required: true },
-  otp: { type: String, required: true },
-  otpId: { type: String, required: true },
-  expiresAt: { type: Date, required: true },
-  createdAt: { type: Date, default: Date.now }
+  email: { 
+    type: String, 
+    required: true 
+  },
+  otp: { 
+    type: String, 
+    required: true 
+  },
+  otpId: { 
+    type: String, 
+    required: true 
+  },
+  expiresAt: { 
+    type: Date, 
+    required: true 
+  },
+  createdAt: { 
+    type: Date, 
+    default: Date.now,
+    index: { expires: '10m' } // স্বয়ংক্রিয়ভাবে ১০ মিনিট পর ডিলিট হবে
+  }
 });
 
-// Add indexes for better performance
-paymentSchema.index({ email: 1, status: 1 });
-userSchema.index({ email: 1 }, { unique: true });
-otpSchema.index({ email: 1 });
-
-const Payment = mongoose.model('Payment', paymentSchema);
 const User = mongoose.model('User', userSchema);
 const OTP = mongoose.model('OTP', otpSchema);
 
 // Utility Functions
-const generateOTP = () => Math.floor(100000 + Math.random() * 900000).toString();
+const generateOTP = () => {
+  return Math.floor(1000 + Math.random() * 9000).toString(); // ৪ ডিজিট OTP
+};
 
-const sendEmail = async (options) => {
+const sendOTPEmail = async (email, otp) => {
+  const mailOptions = {
+    from: `"Talimul Islam Academy" <${process.env.GMAIL_USER}>`,
+    to: email,
+    subject: 'আপনার OTP কোড',
+    html: `
+      <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+        <h2 style="color: #6A35F2;">Talimul Islam Academy</h2>
+        <p>আপনার OTP কোড নিচে দেওয়া হলো:</p>
+        <div style="background: #f5f5f5; padding: 20px; text-align: center; font-size: 24px; letter-spacing: 5px;">
+          <strong>${otp}</strong>
+        </div>
+        <p style="color: #888; font-size: 12px;">এই OTP ${OTP_EXPIRE_MINUTES} মিনিটের জন্য বৈধ</p>
+      </div>
+    `
+  };
+
   try {
-    await transporter.sendMail({
-      from: `"Talimul Islam Academy" <${process.env.GMAIL_USER}>`,
-      to: options.email,
-      subject: options.subject,
-      html: options.html
-    });
+    await transporter.sendMail(mailOptions);
     return true;
   } catch (error) {
-    console.error('Email sending error:', error);
+    console.error('Email send error:', error);
     return false;
   }
 };
@@ -182,107 +176,89 @@ const protect = async (req, res, next) => {
   if (!token) {
     return res.status(401).json({
       success: false,
-      message: 'Not authorized to access this route'
+      message: 'লগইন প্রয়োজন'
     });
   }
 
   try {
     const decoded = jwt.verify(token, JWT_SECRET);
-    const user = await User.findById(decoded.id).select('-password');
-
-    if (!user) {
-      return res.status(404).json({
-        success: false,
-        message: 'No user found with this ID'
-      });
-    }
-
-    req.user = user;
+    req.user = await User.findById(decoded.id).select('-password');
     next();
   } catch (error) {
     return res.status(401).json({
       success: false,
-      message: 'Not authorized to access this route'
+      message: 'অবৈধ টোকেন'
     });
   }
 };
 
 // API Routes
 
-// Health Check Endpoint
+// Health Check
 app.get('/api/health', (req, res) => {
-  res.status(200).json({
-    status: 'success',
-    message: 'Server is running',
-    timestamp: new Date(),
-    uptime: process.uptime()
+  res.status(200).json({ 
+    status: 'running',
+    timestamp: new Date() 
   });
 });
 
-// User Registration Endpoints
+// Check Email Availability
 app.post('/api/check-email', otpLimiter, async (req, res) => {
   try {
     const { email } = req.body;
 
-    if (!email || !validator.isEmail(email)) {
-      return res.status(400).json({ 
+    if (!validator.isEmail(email)) {
+      return res.status(400).json({
         success: false,
-        message: 'Please provide a valid email address'
+        message: 'সঠিক ইমেইল প্রদান করুন'
       });
     }
 
     const userExists = await User.findOne({ email });
     if (userExists) {
-      return res.status(400).json({ 
+      return res.status(400).json({
         success: false,
         exists: true,
-        message: 'Email already registered'
+        message: 'এই ইমেইলটি ইতিমধ্যে ব্যবহৃত হয়েছে'
       });
     }
 
     const otp = generateOTP();
     const otpId = uuidv4();
-    const expiresAt = new Date(Date.now() + 10 * 60 * 1000); // 10 minutes
+    const expiresAt = new Date(Date.now() + OTP_EXPIRE_MINUTES * 60 * 1000);
 
+    // Delete any existing OTP for this email
     await OTP.deleteMany({ email });
 
-    const newOTP = new OTP({
-      email,
-      otp,
-      otpId,
-      expiresAt
-    });
+    // Save new OTP
+    await OTP.create({ email, otp, otpId, expiresAt });
 
-    await newOTP.save();
-
-    const emailSent = await sendEmail({
-      email,
-      subject: 'Your OTP for Registration',
-      html: `<div>Your OTP is: <strong>${otp}</strong></div>`
-    });
+    // Send OTP via email
+    const emailSent = await sendOTPEmail(email, otp);
 
     if (!emailSent) {
       return res.status(500).json({
         success: false,
-        message: 'Failed to send OTP'
+        message: 'OTP পাঠাতে সমস্যা হয়েছে'
       });
     }
 
     res.status(200).json({
       success: true,
       otpId,
-      message: 'OTP sent successfully'
+      message: 'OTP আপনার ইমেইলে পাঠানো হয়েছে'
     });
 
   } catch (error) {
     console.error('Check email error:', error);
     res.status(500).json({
       success: false,
-      message: 'Internal server error'
+      message: 'সার্ভার সমস্যা'
     });
   }
 });
 
+// Verify OTP
 app.post('/api/verify-otp', async (req, res) => {
   try {
     const { email, otp, otpId } = req.body;
@@ -291,56 +267,72 @@ app.post('/api/verify-otp', async (req, res) => {
     if (!otpRecord) {
       return res.status(400).json({
         success: false,
-        message: 'Invalid OTP request'
+        message: 'অবৈধ OTP রিকোয়েস্ট'
       });
     }
 
     if (otpRecord.expiresAt < new Date()) {
       return res.status(400).json({
         success: false,
-        message: 'OTP has expired'
+        message: 'OTP এর মেয়াদ শেষ'
       });
     }
 
     if (otpRecord.otp !== otp) {
       return res.status(400).json({
         success: false,
-        message: 'Invalid OTP'
+        message: 'ভুল OTP'
       });
     }
 
-    // OTP is valid
+    // Delete OTP after successful verification
     await OTP.deleteOne({ _id: otpRecord._id });
 
     res.status(200).json({
       success: true,
-      message: 'OTP verified successfully'
+      message: 'OTP যাচাইকরণ সফল'
     });
 
   } catch (error) {
     console.error('OTP verification error:', error);
     res.status(500).json({
       success: false,
-      message: 'Internal server error'
+      message: 'সার্ভার সমস্যা'
     });
   }
 });
 
+// Register User
 app.post('/api/register', async (req, res) => {
   try {
     const { name, email, password } = req.body;
+
+    // Validate input
+    if (!name || !email || !password) {
+      return res.status(400).json({
+        success: false,
+        message: 'সমস্ত তথ্য প্রদান করুন'
+      });
+    }
+
+    if (password.length < 6) {
+      return res.status(400).json({
+        success: false,
+        message: 'পাসওয়ার্ড কমপক্ষে ৬ অক্ষরের হতে হবে'
+      });
+    }
 
     // Check if user already exists
     const existingUser = await User.findOne({ email });
     if (existingUser) {
       return res.status(400).json({
         success: false,
-        message: 'Email already registered'
+        message: 'ইমেইলটি ইতিমধ্যে ব্যবহৃত হয়েছে'
       });
     }
 
     // Hash password
-    const hashedPassword = await bcrypt.hash(password, saltRounds);
+    const hashedPassword = await bcrypt.hash(password, 10);
 
     // Create user
     const user = await User.create({
@@ -349,9 +341,9 @@ app.post('/api/register', async (req, res) => {
       password: hashedPassword
     });
 
-    // Create token
+    // Generate JWT token
     const token = jwt.sign({ id: user._id }, JWT_SECRET, {
-      expiresIn: process.env.JWT_EXPIRE || '30d'
+      expiresIn: '30d'
     });
 
     res.status(201).json({
@@ -360,20 +352,21 @@ app.post('/api/register', async (req, res) => {
       user: {
         id: user._id,
         name: user.name,
-        email: user.email,
-        role: user.role
-      }
+        email: user.email
+      },
+      message: 'রেজিস্ট্রেশন সফল হয়েছে'
     });
 
   } catch (error) {
     console.error('Registration error:', error);
     res.status(500).json({
       success: false,
-      message: 'Internal server error'
+      message: 'রেজিস্ট্রেশনে সমস্যা হয়েছে'
     });
   }
 });
 
+// Login User
 app.post('/api/login', async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -383,7 +376,7 @@ app.post('/api/login', async (req, res) => {
     if (!user) {
       return res.status(401).json({
         success: false,
-        message: 'Invalid credentials'
+        message: 'ভুল ইমেইল বা পাসওয়ার্ড'
       });
     }
 
@@ -392,13 +385,13 @@ app.post('/api/login', async (req, res) => {
     if (!isMatch) {
       return res.status(401).json({
         success: false,
-        message: 'Invalid credentials'
+        message: 'ভুল ইমেইল বা পাসওয়ার্ড'
       });
     }
 
-    // Create token
+    // Generate token
     const token = jwt.sign({ id: user._id }, JWT_SECRET, {
-      expiresIn: process.env.JWT_EXPIRE || '30d'
+      expiresIn: '30d'
     });
 
     res.status(200).json({
@@ -407,90 +400,47 @@ app.post('/api/login', async (req, res) => {
       user: {
         id: user._id,
         name: user.name,
-        email: user.email,
-        role: user.role
-      }
+        email: user.email
+      },
+      message: 'সফলভাবে লগইন করা হয়েছে'
     });
 
   } catch (error) {
     console.error('Login error:', error);
     res.status(500).json({
       success: false,
-      message: 'Internal server error'
+      message: 'লগইনে সমস্যা হয়েছে'
     });
   }
 });
 
+// Get Current User
 app.get('/api/me', protect, async (req, res) => {
   try {
-    const user = await User.findById(req.user.id).select('-password');
-
     res.status(200).json({
       success: true,
-      user
+      user: req.user
     });
   } catch (error) {
     console.error('Get user error:', error);
     res.status(500).json({
       success: false,
-      message: 'Internal server error'
+      message: 'ডেটা লোড করতে সমস্যা'
     });
   }
 });
 
-// Payment Endpoints
-app.post('/api/payments', protect, async (req, res) => {
-  try {
-    const { name, email, phone, paymentMethod, txnId, courseId, amount } = req.body;
-
-    const payment = await Payment.create({
-      name,
-      email,
-      phone,
-      paymentMethod,
-      txnId,
-      courseId,
-      amount,
-      user: req.user.id
-    });
-
-    // Add course to user's courses
-    await User.findByIdAndUpdate(req.user.id, {
-      $addToSet: { courses: courseId }
-    });
-
-    res.status(201).json({
-      success: true,
-      data: {
-        paymentId: payment._id,
-        status: payment.status
-      }
-    });
-
-  } catch (error) {
-    console.error('Payment error:', error);
-    res.status(400).json({
-      success: false,
-      message: error.message
-    });
-  }
-});
-
-// Error Handling Middleware
+// Error Handling
 app.use((err, req, res, next) => {
   console.error(err.stack);
-  
-  err.statusCode = err.statusCode || 500;
-  err.status = err.status || 'error';
-
-  res.status(err.statusCode).json({
-    status: err.status,
-    message: err.message
+  res.status(500).json({
+    success: false,
+    message: 'সার্ভারে সমস্যা হয়েছে'
   });
 });
 
-// Server Initialization
+// Start Server
 app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-  console.log(`Environment: ${process.env.NODE_ENV || 'development'}`);
+  console.log(`🚀 Server running on port ${PORT}`);
+  console.log(`🔗 http://localhost:${PORT}`);
 });
